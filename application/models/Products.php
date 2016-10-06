@@ -18,19 +18,19 @@ class Products extends CI_Model {
 
 		array(	'id' => '2', 
 				'name' => 'mana potion',
-				'amount' => 32
+				'amount' => 32,
 				'desc' => 'Restores 150 Mana over 15 seconds',
 				'price' => 50),
 
 		array(	'id' => '3', 
 				'name' => 'iron sword',
-				'amount' => 32
+				'amount' => 32,
 				'desc' => '+40 Attack Damage',
 				'price' => 1300),
 
 		array(	'id' => '4', 
 				'name' => 'iron breastplate',
-				'amount' => 32
+				'amount' => 32,
 				'desc' => '+40 Armor',
 				'price' => 800),
 
@@ -42,13 +42,13 @@ class Products extends CI_Model {
 
 		array(	'id' => '6', 
 				'name' => 'steel sword',
-				'amount' => 32
+				'amount' => 32,
 				'desc' => '+75 Attack Damage',
 				'price' => 2800),
 
 		array(	'id' => '7', 
 				'name' => 'steel breastplate',
-				'amount' => 32
+				'amount' => 32,
 				'desc' => '+100 Armor',
 				'price' => 2300),
 
