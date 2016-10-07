@@ -41,7 +41,9 @@ class Admin extends Application
             $text_data = array('name' => 'n_' . $record['id'],);
             $chk_data = array('name' => 'c_' . $record['id']);
 
-            $items[] = array($record['name'], form_input($text_data), form_checkbox($chk_data));
+            $items[] = array($record['name'],
+                form_input($text_data, "", "class='input'"),
+                form_checkbox($chk_data, "", "", "class='checkbox'"));
 
         }
 
@@ -49,7 +51,8 @@ class Admin extends Application
         $items[] = array('');
         $items[] = array('Add New Item', '', '');
         $new_data = array('name' => 'a_');
-        $items[] = array(form_input($new_data), '', form_submit('', 'Submit'));
+        $items[] = array(form_input($new_data, "", "class='input'"),
+            '', form_submit('', 'Submit', "class='submit'"));
 
         // Submit button
 //        $items[] = array('', '', );
