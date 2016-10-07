@@ -3,9 +3,6 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
-2016-10-06 23:40 - Lydia
--Modified page style for admin, recipe, product and material views
-
 2016-10-06 22:25 - Dennis
 -Admin controller to allow renaming instead of changing quantity
 -fixed Materials model bracket
