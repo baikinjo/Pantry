@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-07 16:51 - Dennis
+Renamed cost of materials to 'price' in materials model.
+
 2016-10-07 16:30 - Haram
 -Changed the material model to address the attribute more accurately.
 -Changed the table view in material controller to fit the new model.
