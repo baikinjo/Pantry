@@ -35,7 +35,7 @@ class Material extends Application
         foreach ($source as $record)
         {
 			$text_data = array('name' => $record['id'],);
-            $items[] = array ($record['name'],$record['itemPerCase'],"$ ".$record['costPerCase'],$record['totalItem'],form_input($text_data));
+            $items[] = array ($record['name'],$record['itemPerCase'],"$ ".$record['price'],$record['totalItem'],form_input($text_data));
 		
         }
 
