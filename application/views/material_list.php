@@ -13,7 +13,7 @@
     </div>
 
     <div id="body">
-        <div class ="row">
+        <div id="listTable" class ="row">
 		{form_open}
 			{Materials_table}
 		{form_close}

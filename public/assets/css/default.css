@@ -64,7 +64,17 @@ footer {
 	text-decoration: none;
 }
 
+#navigation {
+	background-color: #f1f1f1;
+	height:100%;
+
+}
+
 @media  (min-width: 640px) and (max-width: 1300px) {
+	html, body, #container {
+		height: 100%;
+	}
+
 	#navigation {
 		float: left;
 		width: 20%;
@@ -77,6 +87,10 @@ footer {
 }
 
 @media (min-width:1300px) {
+	html, body, #container {
+		height: 100%;
+	}
+
 	#navigation {
 		float: left;
 		width: 15%;
@@ -92,7 +106,6 @@ footer {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	background-color: #f1f1f1;
 }
 
 #navigation li a {
@@ -110,10 +123,6 @@ footer {
 #navigation li a:hover:not(.active) {
 	background-color: #767676;
 	color: white;
-}
-
-#title{
-
 }
 
 #body {
@@ -146,11 +155,16 @@ footer {
 	color: white;
 }
 
+#subtitles{
+	margin-bottom: 15px;
+}
+
+
 /**
 * Table style
 */
 
-#m, #r, #p{
+#m, #r, #p, #listTable{
 	text-align: left;
 }
 
