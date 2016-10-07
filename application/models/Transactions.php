@@ -25,7 +25,7 @@ class Transactions extends CI_Model {
         $data = $this->session->products;
 
         //add new data
-        $data[$id] = $value;
+        $data[$id] = isset($data[$id]) ? $data[$id] += $value : $value;
 
         //save to session
         $this->session->set_userdata('products', $data);
@@ -42,7 +42,7 @@ class Transactions extends CI_Model {
         $data = $this->session->recipes;
 
         //add new data
-        $data[$id] = $value;
+        $data[$id] = isset($data[$id]) ? $data[$id] += $value : $value;
 
         //save to session
         $this->session->set_userdata('recipes', $data);
@@ -59,10 +59,9 @@ class Transactions extends CI_Model {
 	    $data = $this->session->materials;
 
         //add new data
-        $data[$id] = $value;
+        $data[$id] = isset($data[$id]) ? $data[$id] += $value : $value;
 
         //save to session
         $this->session->set_userdata('materials', $data);
-        var_dump($this->session->materials);
 	}
 }
