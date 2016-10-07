@@ -24,26 +24,38 @@ class Product extends Application
 	private function create_form($type) {
 
         //Open form
-        $this->data['form_open'] = form_open('admin/post');
+        $this->data['form_open'] = form_open('product/sales');
 
         // Get list of items
 
         $source = $this->$type->all();
 
         // Set table headers
-        $items[] = array('Name', 'Description', 'Price');
+        $items[] = array('Name', 'Description', 'Price', 'Quantity', 'Order');
 
         // Add table rows
         foreach ($source as $record)
         {
-            $items[] = array($record['name'], $record['desc'], $record['price']);
+            $num_input = array('type' => 'number', 'value' => '0', 'class' => 'num-field', 'name' => 'Quantity');
+            $chk_data = array('name' => 'c_' . $record['id']);
+
+            $items[] = array($record['name'], 
+                             $record['desc'], 
+                             $record['price'], 
+                             form_input($num_input),
+                             form_checkbox($chk_data, "", "", "class='checkbox'"));
 
         }
 
         //Generate the materials table
         $this->data[$type.'_table'] = $this->table->generate($items);
 
+        $this->data['order_button'] = form_submit('mysubmit', 'Order');
         //close form
         $this->data['form_close'] = form_close();
+    }
+
+    public function sales(){
+        var_dump($_POST);
     }
 }
