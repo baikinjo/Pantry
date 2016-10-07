@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-07 15:11 - Injo
+-Added two new columns: quantity input and order check box
+-Added new submit button from product page
 
 2016-10-07 14:16 - Haram
 -Added table view for material
@@ -10,6 +13,9 @@ Members: Matthew, Dennis, Injo, Haram, Lydia
 
 2016-10-07 14:09 - Lydia
 -Modified table layout for admin.php, added a js file in assets folder
+
+2016-10-07 11:42 - Injo
+- Modified product list page to table view
 
 2016-10-07 09:16 - Dennis
 -Bug fix: transaction getter for recipes and products
