@@ -3,6 +3,10 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+
+2016-10-06 23:40 - Lydia
+-Modified page style for admin, recipe, product and material views
+
 2016-10-06 23:24 - Dennis
 -Admin controller and view displays all three models
 

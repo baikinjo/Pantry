@@ -2,9 +2,9 @@
 	<ul>
 		<li><a class="active" href="/">Dashboard</a></li>
 		<li><a href="/admin">Administration</a></li>
-		<li><a href="/receiving">Receiving</a></li>
-		<li><a href="/production">Production</a></li>
-		<li><a href="/sales">Sales</a></li>
+		<li><a href="/material">Material</a></li>
+		<li><a href="/recipe">Recipe</a></li>
+		<li><a href="/product">Product</a></li>
 	</ul>
 </div>
 <div id="content">
