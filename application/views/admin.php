@@ -13,8 +13,9 @@
     </div>
 
     <div id="body">
-        {form_open}
-        {mat_table}
-        {form_close}
+        <div class="">{Materials_table}</div>
+        <div class="">{Recipes_table}</div>
+        <div class="">{Products_table}</div>
     </div>
 </div>
+

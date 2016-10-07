@@ -3,14 +3,15 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+
 2016-10-06 23:40 - Lydia
 -Modified page style for admin, recipe, product and material views
 
-2016-10-06 22:25 - Dennis
+2016-10-06 23:24 - Dennis
+-Transaction setter now adds to instead of replacing previous values
+-Admin controller and view displays all three models
 -Admin controller to allow renaming instead of changing quantity
 -fixed Materials model bracket
-
-2016-10-06 20:33 - Dennis
 -Added Transaction Model
 -Readded Product MVC
 
