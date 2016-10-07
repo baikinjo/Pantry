@@ -13,8 +13,11 @@
     </div>
 
     <div id="body">
+        <h3>Materials</h3>
         <div class="">{Materials_table}</div>
+        <h3>Recipes</h3>
         <div class="">{Recipes_table}</div>
+        <h3>Products</h3>
         <div class="">{Products_table}</div>
     </div>
 </div>
