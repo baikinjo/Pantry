@@ -50,6 +50,7 @@ class Materials extends CI_Model {
 		array(	'id' => '12', 
 				'name' => 'emerald dust',
 				'amount' => 9)
+
 	);
 
 	// Constructor
@@ -58,6 +59,15 @@ class Materials extends CI_Model {
 		parent::__construct();
 	}
 
+	public function getMaterialWithName($name)
+	{
+		// iterate over the data until we find the one we want
+		foreach ($this->data as $record)
+			if ($record['name'] == $name)
+				return $record;
+		return null;
+	}
+	
 	public function get($which)
 	{
 		// iterate over the data until we find the one we want

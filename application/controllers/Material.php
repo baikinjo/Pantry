@@ -9,6 +9,8 @@ class Material extends Application
 	{
 		parent::__construct();
 	}
+	
+	
 
 	/**
 	 * Homepage for our app
@@ -21,18 +23,36 @@ class Material extends Application
 
 		// build the list of authors, to pass on to our view
 		$source = $this->Materials->all();
-		$items = array ();
-		foreach ($source as $record)
-		{
-			$items[] = array ('name' => $record['name']);
-		}
-		$this->data['items'] = $items;
 
-        $mattrans = $this->Transactions->getMaterials();
-        var_dump($mattrans);
-        //$this->data['test'] = 'material_list';
+		$this->data['form_open'] = form_open('material/post');
+		
+		//$test = $this->Transactions->getMaterials();
 
+        // Set table headers
+
+        $items[] = array('ID', 'NAME', 'AMOUNT', 'ADD','');
+
+		//foreach($test as $value){
+			//print($value);
+		//}
+
+        // Add table rows
+
+        foreach ($source as $record)
+        {
+			$text_data = array('name' => $record['id'],);
+            $items[] = array ($record['id'],$record['name'],$record['amount'],form_input($text_data));
+		
+        }
+
+        $items[] = array('', form_submit('', 'Submit'));
+        //Generate the materials table
+
+        $this->data['Materials_table'] = $this->table->generate($items);
+		
+		$this->data['form_close'] = form_close();
 		$this->render();
+		
 
 	}
 
@@ -45,14 +65,29 @@ class Material extends Application
 		$this->render();
 	}
 	
-	public function getMaterialWithName($name)
-	{
-		// iterate over the data until we find the one we want
-		foreach ($this->data as $record)
-			if ($record['name'] == $name)
-				return $record;
-		return null;
-	}
+	public function post()
+    {
+		//var_dump($_POST);
+		
+		foreach ($_POST as $post_name => $post_value){
+			$this->Transactions->setMaterials($post_name, $post_value);
+		}
+
+
+		/*
+		foreach (array_keys($_POST) as $entry){
+			var_dump($entry);
+			
+		}
+		
+        $id = $_POST['key'];
+        $value = $_POST['value'];
+
+       
+        $this->Transactions->setMaterials($id, $value);
+*/
+
+    }
 
 	public function clear() {
 		$this->session->unset_userdata('materials');

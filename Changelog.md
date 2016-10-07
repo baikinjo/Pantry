@@ -3,6 +3,10 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+
+2016-10-07 14:16 - Haram
+-Added table view for material
+
 2016-10-07 14:09 - Lydia
 -Modified table layout for admin.php, added a js file in assets folder
 
