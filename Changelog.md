@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-07 14:16 - Haram
+-Added table view for material
+
 2016-10-07 09:16 - Dennis
 -Bug fix: transaction getter for recipes and products
 
