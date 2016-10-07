@@ -19,5 +19,6 @@
 <footer>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds.{ci_version}</p>
 </footer>
+<script type = 'text/javascript' src = "/assets/js/admin.js"></script>
 </body>
 </html>
