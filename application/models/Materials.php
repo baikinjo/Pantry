@@ -50,7 +50,7 @@ class Materials extends CI_Model {
 		array(	'id' => '12', 
 				'name' => 'emerald dust',
 				'amount' => 9)
-	
+
 	);
 
 	// Constructor

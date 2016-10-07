@@ -15,39 +15,46 @@ class Admin extends Application
         // This is the view we want shown
         $this->data['pagebody'] = 'admin';
 
+        $this->create_form('Materials');
+        $this->create_form('Recipes');
+        $this->create_form('Products');
 
-        //Materials form
+        $this->render();
+
+    }
+
+    private function create_form($type) {
+
+        //Open form
         $this->data['form_open'] = form_open('admin/post');
 
-        // Get list of materials
-        $source = $this->Materials->all();
+        // Get list of items
 
-        // Set table headers and parameters
-        $items[] = array('Name', 'Amount', 'Update Amount', 'Delete');
-        $data = array(
-            'type'  => 'number',
-            'class' => 'num-field',
-            'name'  => '2');
+        $source = $this->$type->all();
+
+        // Set table headers
+        $items[] = array('Name', 'Rename', 'Delete');
 
         // Add table rows
         foreach ($source as $record)
         {
-            $tmpData = array('name' => $record['id']);
+            $text_data = array('name' => 'n_' . $record['id'],);
+            $chk_data = array('name' => 'c_' . $record['id']);
 
-            //$tmpData = $data;
-            $items[] = array($record['name'], $record['amount'], form_input($tmpData), form_checkbox());
+            $items[] = array($record['name'], form_input($text_data), form_checkbox($chk_data));
+
         }
 
         // Add new items
-        $items[] = array('', '', '', '');
-        $items[] = array('Add New Item', '', '', '');
-        $items[] = array(form_input($data), form_input($data), '', '');
+        $items[] = array('');
+        $items[] = array('Add New Item', '', '');
+        $new_data = array('name' => 'a_');
+        $items[] = array(form_input($new_data), '', form_submit('', 'Submit'));
 
         // Submit button
-        $items[] = array('', '', '', form_submit('submit', 'Submit'));
+//        $items[] = array('', '', );
 
-        $this->data['test'] = $this->Materials->get(1);
-
+        //table parameters
 //        $params = array(
 //            'table_open' => '<table class="table-mat" border="0" cellpadding="2" cellspacing="5">',
 //            'cell_start' => '<td class="item-mat>',
@@ -57,38 +64,34 @@ class Admin extends Application
 //        $this->table->set_template($params);
 
         //Generate the materials table
-        $this->data['mat_table'] = $this->table->generate($items);
+        $this->data[$type.'_table'] = $this->table->generate($items);
 
         //close form
         $this->data['form_close'] = form_close();
 
-
-        $this->render();
-
     }
 
-    /**
-     * Elayne Boolsters quote Issue #4
-     */
-    public function get($id) {
-        $this->data['pagebody'] = 'material_single';
 
-        $record = $this->Materials->get($id);
-        $this->data = array_merge($this->data, $record);
-
-        $this->render();
-    }
-
-    public function clear() {
-        $this->session->unset_userdata('materials');
-        echo 'materials transactions cleared!';
-    }
 
     public function post()
     {
-        foreach($_POST as $a){
-            
+        var_dump($_POST);
+        $checked = array();
+        $rename = array();
+
+        foreach(array_keys($_POST) as $entry)
+        {
+            if ($entry[0] == 'c') {
+                array_push($checked, $entry);
+                echo $entry . ' is checked' . PHP_EOL;
+            } else if ($entry[0] == 'n' && !empty(trim($_POST[$entry])) ) {
+                array_push($rename, $entry);
+                echo $_POST[$entry] . ' will be renamed' . PHP_EOL;
+            } else if ($entry[0] == 'a') {
+                echo $_POST[$entry] . ' will be created' . PHP_EOL;
+            }
         }
+
 
     }
 

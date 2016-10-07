@@ -3,6 +3,20 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-07 09:16 - Dennis
+-Bug fix: transaction getter for recipes and products
+
+2016-10-06 23:40 - Lydia
+-Modified page style for admin, recipe, product and material views
+
+2016-10-06 23:24 - Dennis
+-Transaction setter now adds to instead of replacing previous values
+-Admin controller and view displays all three models
+-Admin controller to allow renaming instead of changing quantity
+-fixed Materials model bracket
+-Added Transaction Model
+-Readded Product MVC
+
 2016-10-06 17:58 - Matthew
 -Added Recipes Model
 -Added Recipe List View
