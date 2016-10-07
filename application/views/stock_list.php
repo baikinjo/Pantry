@@ -13,6 +13,12 @@
     </div>
 
     <div id="body">
-       <div class="">{Products_table}</div>
+       <div class="">
+       {Products_table}
+       <hr>
+       {form_open}
+       {order_button}
+       {form_close}
+       </div>
     </div>
 </div>
