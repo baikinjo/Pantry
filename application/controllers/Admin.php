@@ -49,10 +49,10 @@ class Admin extends Application
         $items[] = array('');
         $items[] = array('Add New Item', '', '');
         $new_data = array('name' => 'a_');
-        $items[] = array(form_input($new_data), '', '');
+        $items[] = array(form_input($new_data), '', form_submit('', 'Submit'));
 
         // Submit button
-        $items[] = array('', '', form_submit('', 'Submit'));
+//        $items[] = array('', '', );
 
         //table parameters
 //        $params = array(
@@ -75,7 +75,7 @@ class Admin extends Application
 
     public function post()
     {
-        //only handles materials for now
+        var_dump($_POST);
         $checked = array();
         $rename = array();
 
