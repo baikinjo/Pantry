@@ -16,7 +16,7 @@ class Transactions extends CI_Model {
 	}
 
 	public function getProducts(){
-		return $this->session['products'];
+		return $this->session->products;
 	}
 
 	public function setProducts($id, $value)
@@ -33,7 +33,7 @@ class Transactions extends CI_Model {
 
 	public function getRecipes()
     {
-        return $this->session['recipes'];
+        return $this->session->recipes;
 	}
 
 	public function setRecipes($id, $value)
