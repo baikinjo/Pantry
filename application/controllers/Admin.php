@@ -16,38 +16,37 @@ class Admin extends Application
         $this->data['pagebody'] = 'admin';
 
 
-        //Materials form
+        //Open materials form
         $this->data['form_open'] = form_open('admin/post');
 
         // Get list of materials
         $source = $this->Materials->all();
 
         // Set table headers and parameters
-        $items[] = array('Name', 'Amount', 'Update Amount', 'Delete');
-        $data = array(
-            'type'  => 'number',
-            'class' => 'num-field',
-            'name'  => '2');
+        $items[] = array('Name', 'Rename', 'Delete');
+        $data = array('class' => '');
 
         // Add table rows
         foreach ($source as $record)
         {
-            $tmpData = array('name' => $record['id']);
+            $text_data = array('name' => 'n_' . $record['id']);
+            $chk_data = array('name' => 'c_' . $record['id']);
 
-            //$tmpData = $data;
-            $items[] = array($record['name'], $record['amount'], form_input($tmpData), form_checkbox());
+            $items[] = array($record['name'], form_input($text_data), form_checkbox($chk_data));
+
         }
 
         // Add new items
-        $items[] = array('', '', '', '');
-        $items[] = array('Add New Item', '', '', '');
-        $items[] = array(form_input($data), form_input($data), '', '');
+        $items[] = array('');
+        $items[] = array('Add New Item', '', '');
+        $items[] = array(form_input($data), '', '');
 
         // Submit button
-        $items[] = array('', '', '', form_submit('submit', 'Submit'));
+        $items[] = array('', '', form_submit('submit', 'Submit'));
 
         $this->data['test'] = $this->Materials->get(1);
 
+        //table parameters
 //        $params = array(
 //            'table_open' => '<table class="table-mat" border="0" cellpadding="2" cellspacing="5">',
 //            'cell_start' => '<td class="item-mat>',
@@ -86,9 +85,7 @@ class Admin extends Application
 
     public function post()
     {
-        foreach($_POST as $a){
-            
-        }
+        var_dump($_POST);
 
     }
 

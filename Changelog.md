@@ -3,6 +3,10 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-06 22:25 - Dennis
+-Admin controller to allow renaming instead of changing quantity
+-fixed Materials model bracket
+
 2016-10-06 20:33 - Dennis
 -Added Transaction Model
 -Readded Product MVC

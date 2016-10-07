@@ -5,7 +5,7 @@ class Materials extends CI_Model {
 	var $data = array(
 		array(	'id' => '1', 
 				'name' => 'empty bottle',
-				'amount' => 12,
+				'amount' => 12),
 
 		array(	'id' => '2', 
 				'name' => 'red herb',
@@ -50,7 +50,6 @@ class Materials extends CI_Model {
 		array(	'id' => '12', 
 				'name' => 'emerald dust',
 				'amount' => 9)
-	)
 	);
 
 	// Constructor
