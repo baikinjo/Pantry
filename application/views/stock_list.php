@@ -13,10 +13,6 @@
     </div>
 
     <div id="body">
-        <div class="row">
-            {items}
-            <div class="span4">{name}</div>
-            {/items}
-        </div>
+       <div class="">{Products_table}</div>
     </div>
 </div>
