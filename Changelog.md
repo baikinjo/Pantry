@@ -7,12 +7,23 @@ Members: Matthew, Dennis, Injo, Haram, Lydia
 -Changed the material model to address the attribute more accurately.
 -Changed the table view in material controller to fit the new model.
 
+2016-10-07 16:10 - Lydia
+-Modified table layout for material.php and product.php. Edited navigation bar.
+
+2016-10-07 15:11 - Injo
+-Added two new columns: quantity input and order check box
+-Added new submit button from product page
+>>>>>>> 6b84d125a7b55dfac2954b09a2b2326eb82d2423
+
 2016-10-07 14:16 - Haram
 -Added table view for material
 -Added ui for material view
 
 2016-10-07 14:09 - Lydia
 -Modified table layout for admin.php, added a js file in assets folder
+
+2016-10-07 11:42 - Injo
+- Modified product list page to table view
 
 2016-10-07 09:16 - Dennis
 -Bug fix: transaction getter for recipes and products

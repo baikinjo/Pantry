@@ -39,8 +39,8 @@ class Material extends Application
 		
         }
 
-        $items[] = array('','','','' ,form_submit('', 'Submit'));
-        //Generate the materials table
+        $items[] = array(form_submit('', 'Submit', "class='submit'"), '', '', '');
+
 
         $this->data['Materials_table'] = $this->table->generate($items);
 		
