@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-07 16:10 - Lydia
+-Modified table layout for material.php and product.php. Edited navigation bar.
+
 2016-10-07 15:11 - Injo
 -Added two new columns: quantity input and order check box
 -Added new submit button from product page

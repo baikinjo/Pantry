@@ -13,12 +13,10 @@
     </div>
 
     <div id="body">
-       <div class="">
-       {Products_table}
-       <hr>
-       {form_open}
-       {order_button}
-       {form_close}
+       <div id="listTable">
+           {form_open}
+           {Products_table}
+           {form_close}
        </div>
     </div>
 </div>

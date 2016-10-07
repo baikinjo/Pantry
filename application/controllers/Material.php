@@ -41,11 +41,11 @@ class Material extends Application
         foreach ($source as $record)
         {
 			$text_data = array('name' => $record['id'],);
-            $items[] = array ($record['id'],$record['name'],$record['amount'],form_input($text_data));
+            $items[] = array ($record['id'],$record['name'],$record['amount'],form_input($text_data, "", "class='input'"));
 		
         }
 
-        $items[] = array('', form_submit('', 'Submit'));
+        $items[] = array(form_submit('', 'Submit', "class='submit'"), '', '', '');
         //Generate the materials table
 
         $this->data['Materials_table'] = $this->table->generate($items);
