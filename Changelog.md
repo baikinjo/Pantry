@@ -3,6 +3,10 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-06 20:33 - Dennis
+-Added Transaction Model
+-Readded Product MVC
+
 2016-10-06 17:58 - Matthew
 -Added Recipes Model
 -Added Recipe List View
