@@ -13,10 +13,10 @@
     </div>
 
     <div id="body">
-        <div class="row">
-            {items}
-            <div class="span4">{name}</div>
-            {/items}
-        </div>
+       <div id="listTable">
+           {form_open}
+           {Products_table}
+           {form_close}
+       </div>
     </div>
 </div>

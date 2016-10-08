@@ -64,7 +64,17 @@ footer {
 	text-decoration: none;
 }
 
+#navigation {
+	background-color: #f1f1f1;
+	height:100%;
+
+}
+
 @media  (min-width: 640px) and (max-width: 1300px) {
+	html, body, #container {
+		height: 100%;
+	}
+
 	#navigation {
 		float: left;
 		width: 20%;
@@ -77,6 +87,10 @@ footer {
 }
 
 @media (min-width:1300px) {
+	html, body, #container {
+		height: 100%;
+	}
+
 	#navigation {
 		float: left;
 		width: 15%;
@@ -92,7 +106,6 @@ footer {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	background-color: #f1f1f1;
 }
 
 #navigation li a {
@@ -112,15 +125,62 @@ footer {
 	color: white;
 }
 
-#title{
-
-}
-
 #body {
 	margin: 0 15px 0 15px;
 }
 
-#button{
+#subtitles ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 7px 5px;
+	transform: skewX(-20deg);
+}
+
+#subtitles li {
+	display: inline;
+	color: #000;
+	padding: 8px 10px;
+	text-decoration: none;
+
+	background-color: #f1f1f1;
+}
+
+#subtitles li.activeSubtitle {
+	background-color: #6326a5;
+	color: white;
+}
+
+#subtitles li:hover:not(.activeSubtitle) {
+	background-color: #767676;
+	color: white;
+}
+
+#subtitles{
+	margin-bottom: 15px;
+}
+
+
+/**
+* Table style
+*/
+
+#m, #r, #p, #listTable{
+	text-align: left;
+}
+
+.notActiveTable{
+	display: none;
+}
+
+.activeTable{
+	display: block;
+}
+
+/**
+* Form style (submit button, input field, checkbox)
+*/
+
+.submit{
 	margin-right: 5px;
 	font-family: 'Arial', sans-serif;
 	font-size:14px;
@@ -136,9 +196,21 @@ footer {
 	-webkit-border-radius: .15em;
 	-moz-border-radius: .15em;
 	border-radius: .15em;
-	padding: .3em 1em .3em;
+	padding: .3em .9em .3em;
 }
 
-#button:hover{
+.submit:hover{
 	background-color: #541483;
 }
+
+
+.input{
+	border: solid 1px #6326a5;
+	padding: .3em .3em .3em;
+}
+
+.checkbox{
+	width:18px;
+	height:18px;
+}
+
