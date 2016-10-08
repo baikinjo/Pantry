@@ -3,6 +3,7 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+
 2016-10-07 17:01 - Injo
 -Modified products entries
 -Store datas into session
@@ -13,6 +14,7 @@ Renamed cost of materials to 'price' in materials model.
 2016-10-07 16:30 - Haram
 -Changed the material model to address the attribute more accurately.
 -Changed the table view in material controller to fit the new model.
+-Changed table of view of material to match the cases and creating a single view for each items.
 
 2016-10-07 16:10 - Lydia
 -Modified table layout for material.php and product.php. Edited navigation bar.

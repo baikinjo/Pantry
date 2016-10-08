@@ -30,12 +30,13 @@ class Material extends Application
 
         // Set table headers
 
-        $items[] = array('Name','Items/Case','Cost/Case' ,'Total Amount', 'Cases Recieved');
+        $items[] = array('Name','Cost/Case' ,'Stocked Cases', 'Cases Recieved');
 
         foreach ($source as $record)
         {
 			$text_data = array('name' => $record['id'],);
-            $items[] = array ($record['name'],$record['itemPerCase'],"$ ".$record['price'],$record['totalItem'],form_input($text_data));
+			$case = $record['totalItem'] / $record['itemPerCase'];
+            $items[] = array ($record['name'],"$ ".$record['price'],floor($case) ,form_input($text_data));
 		
         }
 
@@ -51,7 +52,8 @@ class Material extends Application
 	}
 
 	public function get($id) {
-		//$this->data['pagebody'] = 'material_single';
+		
+		$this->data['pagebody'] = 'material_single';
 		
 		$record = $this->Materials->get($id);
 		$this->data = array_merge($this->data, $record);
