@@ -3,6 +3,12 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-22:46 - Injo
+- Updated Product Controller
+- Modified Product List view to Product Single view
+- Modified name of view
+- Added singleConfirmation view to display the result
+
 2016-10-07 21:03 - Matthew
 -Fixed bugs in Recipe Controller
 -Displays craft results as flash message at recipe_single view
