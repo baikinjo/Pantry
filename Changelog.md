@@ -3,6 +3,10 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-07 21:03 - Matthew
+-Fixed bugs in Recipe Controller
+-Displays craft results as flash message at recipe_single view
+
 2016-10-07 18:46 - Haram
 -Updated the post method on the Material controller to call a view that shows the result of the "Receiving".
 -Updated the Material controller to make the name of item to be clickable and linked them to the single view.
