@@ -53,7 +53,7 @@ class Products extends CI_Model {
 				'price' => 2300),
 
 		array(	'id' => '8', 
-				'name' => 'streel greaves',
+				'name' => 'steel greaves',
 				'amount' => 322,
 				'desc' => 'Enhacned Movement: +55 Movement Speed',
 				'price' => 900),
