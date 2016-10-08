@@ -3,6 +3,8 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-07 17:22 - Dennis
+Added dashboard controller; dashboard view displays costs
 
 2016-10-07 17:01 - Injo
 -Modified products entries
