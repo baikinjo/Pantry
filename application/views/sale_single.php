@@ -14,7 +14,7 @@
 
     <div id="body">
         <div class="row">
-            <div class="span4">{name}</div>
+            {stock_table}
         </div>
     </div>
 </div>
