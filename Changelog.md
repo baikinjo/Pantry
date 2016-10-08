@@ -3,6 +3,11 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+
+2016-10-08 16:31 - Matthew
+-Added previous button on recipe_single view
+-Save crafting results to session for logging purpose
+
 2016-10-08 14:13 - Injo
 -Fixed sale_single previous button
 

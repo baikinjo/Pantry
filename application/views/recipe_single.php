@@ -23,7 +23,8 @@
                 {form_open}
                 {amountToCraftForm}
                 {craftButton}
-                {form_close}
+                {previous}
+                {form_close}  
             </div>
         </div>
     </div>
