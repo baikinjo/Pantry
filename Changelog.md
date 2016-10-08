@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-07 16:30 - Haram
+-Changed table of view of material to match the cases and creating a single view for each items.
+
 2016-10-07 16:51 - Dennis
 Renamed cost of materials to 'price' in materials model.
 
