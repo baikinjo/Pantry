@@ -5,23 +5,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Product extends Application
 {
 
-    function __construct()
-    {
-        parent::__construct();
-    }
 
-    /**
-     * Homepage for our app
-     */
-    public function index()
-    {
-        // this is the view we want shown
-        $this->data['pagebody'] = 'sale_list';
-        $this->create_form('Products');
-        $this->render();
-    }
+    	function __construct()
+	{
+		parent::__construct();
+	}
 
-    private function create_form($type) {
+
+	/**
+	 * Homepage for our app
+	 */
+	public function index()
+	{
+		// this is the view we want shown
+		$this->data['pagebody'] = 'sale_list';
+		$this->create_form('Products');
+
+		$this->render();
+	}
+
+	private function create_form($type) {
 
         //Open form
         $this->data['form_open'] = form_open('product/sales');
@@ -55,6 +58,8 @@ class Product extends Application
         $this->data['clear_data'] = form_reset('','Clear');
         //close form
         $this->data['form_close'] = form_close();
+        $previous = array('onclick' =>'javascript:window.history.go(-1)');
+        $this->data['previous'] = form_button($previous, 'Previous');
     }
 
     public function get($id){
@@ -66,6 +71,7 @@ class Product extends Application
         $items[] = array($source['name'], $source['desc'], $source['price']);
 
         $this->data['stock_table'] = $this->table->generate($items);
+
         $this->render();
     }
 
@@ -75,19 +81,24 @@ class Product extends Application
         foreach($_POST as $post_name => $post_value){
             $this->Transactions->setProducts($post_name, $post_value);
             $inventory[] = array('key' => $post_name, 'value' => $post_value);
-        }    
+        }
 
 
 
         $result = array();
         foreach($inventory as $source){
 
-            if($source['value'] != 0){
+            if($source['value'] == 1){
                 $record = $this->Products->get($source['key']);
                 $result[] = array('line' => "You ordered " . $source['value'] . ' ' .  $record['name'] . "</br>");
+            }else if($source['value'] > 1){
+                $record = $this->Products->get($source['key']);
+                $result[] = array('line' => "You ordered " . $source['value'] . ' ' .  $record['name'] ."s" . "</br>");
             }
         }
         $this->data['result'] = $result;
+        $previous = array('onclick' =>'javascript:window.history.go(-1)');
+        $this->data['previous'] = form_button($previous, 'Previous');
         $this->render();
     }
 
