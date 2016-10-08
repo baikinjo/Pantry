@@ -13,6 +13,8 @@
 	</div>
 
 	<div id="body">
-		<p>Data here</p>
+		<p>${materials_cost} spent purchasing inventory.</p>
+		<p>${recipes_cost} expended from producing items.</p>
+		<p>${products_cost} received from sales</p>
 	</div>
 </div>
