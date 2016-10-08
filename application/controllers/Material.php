@@ -36,8 +36,10 @@ class Material extends Application
         {
 			$text_data = array('name' => $record['id'],);
 			$case = $record['totalItem'] / $record['itemPerCase'];
-            $items[] = array ($record['name'],"$ ".$record['price'],floor($case) ,form_input($text_data));
-		
+            $items[] = array ( '<a href="/material/get/' .
+                               $record['id']. '">' .
+                               $record['name'] . '</a>',
+               "$ ".$record['price'],floor($case) ,form_input($text_data));
         }
 
         $items[] = array(form_submit('', 'Submit', "class='submit'"), '', '', '');
@@ -56,7 +58,13 @@ class Material extends Application
 		$this->data['pagebody'] = 'material_single';
 		
 		$record = $this->Materials->get($id);
-		$this->data = array_merge($this->data, $record);
+		
+		$items[] = array('Name','Items Per Case' ,'Total Stocked Items');
+		$items[] = array($record['name'],$record['itemPerCase'] ,$record['totalItem']);
+		
+		$this->data['Materials_table'] = $this->table->generate($items);
+		
+		//$this->data = array_merge($this->data, $record);
 		
 		$this->render();
 	}
@@ -66,17 +74,44 @@ class Material extends Application
 		//var_dump($_POST);
 		
 		
+		$this->data['pagebody'] = 'material_result';
+		
 		foreach ($_POST as $post_name => $post_value){
 			$this->Transactions->setMaterials($post_name, $post_value);
+			$orders[] = ($post_value);
 		}
 		
-		var_dump($this->Transactions->getMaterials());	
+		
+		
+		$items[] = array('Ordered Items', '# Ordered Cases');
+		
+		//$source = $this->Materials->all();
+		$i =1;
+		foreach($orders as $cases)
+		{
+			if($cases != ""){
+				$source = $this->Materials->get($i);
+				$items[] = array($source['name'],$cases);
+				
+			}
+			$i++;
+        }
+
+        $this->data['Materials_table'] = $this->table->generate($items);
+		
+		$this->render();
+		//var_dump($this->Transactions->getMaterials());	
 		
 		/*
 		foreach (array_keys($_POST) as $entry){
 			var_dump($entry);
 			
 		}
+		
+		foreach($id as $name){
+				if($record['id'] == $name)
+					$items[] = array($record['id'],$orders);
+			}
 		
         $id = $_POST['key'];
         $value = $_POST['value'];

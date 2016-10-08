@@ -48,11 +48,12 @@ class Recipe extends Application
             foreach ($record['materials'] as $material)
             {
                 $stock = $this->Materials->getMaterialWithName($material['name']);
-                $materials[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['amount']);
+                $materials[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['totalItem']);
             }
             
             $this->data['materialList'] = $materials;
             $this->data['itemName'] = $record['name'];
+            //$this->data['flashMessage'] = $this->session->flashdata('craftResult');
             
             //form related vars
             $this->data['form_open'] = form_open('recipe/craft', '', $formHidden);
@@ -60,43 +61,55 @@ class Recipe extends Application
             $this->data['craftButton'] = form_submit('mysubmit', 'Craft');
             $this->data['form_close'] = form_close();
             
+            echo $this->session->flashdata('craftResult');
             $this->render();
+            
         }
 
         /**
          * When user clicks craft
-         * Processes if there is enough material to craft
+         * Processes if there is enough material to craft and crafts as much
+         * as possible
+         * DOES NOT reduce stock number at the moment
+         * Currently displays result as flash message on same page
          */
         public function craft() {
             $amountToCraft = $_POST['amountToCraft'];
             $recipeId = $_POST['recipeId'];
+            $numberCrafted = 0;
             
             $record = $this->Recipes->get($recipeId);
             $tempStocks = array();
-            
-            //Stores temp available stocks since we aren't suppose to update amount at the moment
+                
+            //Checks how many items you can craft
             foreach ($record['materials'] as $material)
             {
                 $stock = $this->Materials->getMaterialWithName($material['name']);
+                $temp = floor($stock['totalItem'] / $material['amount']);
 
-                $tempStocks[$stock['name']] = $stock['amount'];
+                if($numberCrafted == 0) {
+                    $numberCrafted = $temp;
+                }elseif($temp < $numberCrafted){
+                    $numberCrafted = $temp;
+                }
             }
             
-            //Goes through the temp stocks and stops crafting when it runs out
-            for($i = 0; $i < $amountToCraft; $i++) {
-                foreach ($record['materials'] as $material)
-                {   
-                    if($material['amount'] > $tempStocks[$material['name']]) {
-                        echo "Unable to craft item, not enough " . $material['name'] . ".";
-                        return;
-                    }else{
-                        $tempStocks[$material['name']] -= $material['amount'];
-                    }
-                }
-                
-                echo "Crafted 1 " . $record['name'] . ".<br>";
+            if($numberCrafted > $amountToCraft) {
+                $numberCrafted = $amountToCraft;    
             }
-           
+            
+            //Displays flash message depending on result
+            if($numberCrafted == 0) {
+                $result = "Unable to craft " . $record['name'] . ", not enough materials.";                    
+                $this->session->set_flashdata('craftResult', $result);
+                        
+                redirect("recipe/get/" . $recipeId);
+            }else{
+                $result = "Crafted " . $numberCrafted . " " . $record['name'] . ".<br>";
+               $this->session->set_flashdata('craftResult', $result);
+                        
+                redirect("recipe/get/" . $recipeId);
+            }
         }
         
         public function clear() {
