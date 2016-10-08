@@ -7,13 +7,14 @@
         <li><a href="/product">Product</a></li>
     </ul>
 </div>
+
 <div id="content">
     <div id="title">
         <h1>Material</h1>
     </div>
 
     <div id="body">
-        <div class ="row">
+        <div id="listTable" class ="row">
 		{form_open}
 			{Materials_table}
 		{form_close}

@@ -14,10 +14,11 @@
 
     <div id="body">
        <div class="">
-       {Products_table}
-       <hr>
        {form_open}
+       {Products_table}
+       <hr>       
        {order_button}
+       {clear_data}
        {form_close}
        </div>
     </div>

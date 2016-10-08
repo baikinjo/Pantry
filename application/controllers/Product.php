@@ -31,31 +31,41 @@ class Product extends Application
         $source = $this->$type->all();
 
         // Set table headers
-        $items[] = array('Name', 'Description', 'Price', 'Quantity', 'Order');
+        $items[] = array('Name', 'Description', 'Stock', 'Price', 'Quantity');
 
         // Add table rows
         foreach ($source as $record)
         {
-            $num_input = array('type' => 'number', 'value' => '0', 'class' => 'num-field', 'name' => 'Quantity');
-            $chk_data = array('name' => 'c_' . $record['id']);
-
+            $num_input = array('type' => 'number', 'value' => '0', 'class' => 'num-field', 'name' => 'quantity' . $record['id']);
+            
             $items[] = array($record['name'], 
                              $record['desc'], 
-                             $record['price'], 
-                             form_input($num_input),
-                             form_checkbox($chk_data, "", "", "class='checkbox'"));
-
+                             $record['amount'], 
+                             $record['price'],
+                             form_input($num_input));
         }
 
         //Generate the materials table
         $this->data[$type.'_table'] = $this->table->generate($items);
-
+        //submit button
         $this->data['order_button'] = form_submit('mysubmit', 'Order');
+        //clear form
+        $this->data['clear_data'] = form_reset('reset','Clear');
         //close form
         $this->data['form_close'] = form_close();
     }
 
     public function sales(){
-        var_dump($_POST);
+
+        foreach($_POST as $post_name => $post_value){
+            $this->Transactions->setProducts($post_name, $post_value);
+        }    
+            
+        var_dump($this->Transactions->getProducts());
+    }
+
+    public function clear() {
+        $this->session->unset_userdata('products');
+        echo 'products transactions cleared!';
     }
 }
