@@ -53,13 +53,16 @@ class Recipe extends Application
             
             $this->data['materialList'] = $materials;
             $this->data['itemName'] = $record['name'];
-            //$this->data['flashMessage'] = $this->session->flashdata('craftResult');
             
             //form related vars
             $this->data['form_open'] = form_open('recipe/craft', '', $formHidden);
             $this->data['amountToCraftForm'] = form_input($inputForm);
             $this->data['craftButton'] = form_submit('mysubmit', 'Craft');
             $this->data['form_close'] = form_close();
+            
+            //Previous Button
+            $previous = array('onclick' =>'javascript:window.history.go(-1)');
+            $this->data['previous'] = form_button($previous, 'Previous');
             
             echo $this->session->flashdata('craftResult');
             $this->render();
@@ -106,7 +109,8 @@ class Recipe extends Application
                 redirect("recipe/get/" . $recipeId);
             }else{
                 $result = "Crafted " . $numberCrafted . " " . $record['name'] . ".<br>";
-               $this->session->set_flashdata('craftResult', $result);
+                $this->session->set_flashdata('craftResult', $result);
+                $this->Transactions->setRecipes($record['name'], $numberCrafted);
                         
                 redirect("recipe/get/" . $recipeId);
             }
