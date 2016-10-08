@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-08 14:13 - Injo
+-Fixed sale_single previous button
+
 2016-10-08 12:04 - Injo
 -Added previous button on sale_list and sale_confirmation page
 -Modified controller sales() method

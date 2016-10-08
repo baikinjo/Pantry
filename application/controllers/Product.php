@@ -4,13 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Product extends Application
 {
-
-
     	function __construct()
 	{
 		parent::__construct();
 	}
-
 
 	/**
 	 * Homepage for our app
@@ -71,7 +68,8 @@ class Product extends Application
         $items[] = array($source['name'], $source['desc'], $source['price']);
 
         $this->data['stock_table'] = $this->table->generate($items);
-
+        $previous = array('onclick' =>'javascript:window.history.go(-1)');
+        $this->data['previous'] = form_button($previous, 'Previous');
         $this->render();
     }
 
@@ -82,8 +80,6 @@ class Product extends Application
             $this->Transactions->setProducts($post_name, $post_value);
             $inventory[] = array('key' => $post_name, 'value' => $post_value);
         }
-
-
 
         $result = array();
         foreach($inventory as $source){
