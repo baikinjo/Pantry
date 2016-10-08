@@ -30,23 +30,18 @@ class Material extends Application
 
         // Set table headers
 
-        $items[] = array('ID', 'NAME', 'AMOUNT', 'ADD','');
-
-		//foreach($test as $value){
-			//print($value);
-		//}
-
-        // Add table rows
+        $items[] = array('Name','Cost/Case' ,'Stocked Cases', 'Cases Recieved');
 
         foreach ($source as $record)
         {
 			$text_data = array('name' => $record['id'],);
-            $items[] = array ($record['id'],$record['name'],$record['amount'],form_input($text_data));
+			$case = $record['totalItem'] / $record['itemPerCase'];
+            $items[] = array ($record['name'],"$ ".$record['price'],floor($case) ,form_input($text_data));
 		
         }
 
-        $items[] = array('', form_submit('', 'Submit'));
-        //Generate the materials table
+        $items[] = array(form_submit('', 'Submit', "class='submit'"), '', '', '');
+
 
         $this->data['Materials_table'] = $this->table->generate($items);
 		
@@ -57,7 +52,8 @@ class Material extends Application
 	}
 
 	public function get($id) {
-		//$this->data['pagebody'] = 'material_single';
+		
+		$this->data['pagebody'] = 'material_single';
 		
 		$record = $this->Materials->get($id);
 		$this->data = array_merge($this->data, $record);
@@ -69,11 +65,13 @@ class Material extends Application
     {
 		//var_dump($_POST);
 		
+		
 		foreach ($_POST as $post_name => $post_value){
 			$this->Transactions->setMaterials($post_name, $post_value);
 		}
-
-
+		
+		var_dump($this->Transactions->getMaterials());	
+		
 		/*
 		foreach (array_keys($_POST) as $entry){
 			var_dump($entry);
