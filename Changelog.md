@@ -3,6 +3,10 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-08 12:04 - Injo
+-Added previous button on sale_list and sale_confirmation page
+-Modified controller sales() method
+
 2016-10-07 23:44 - Dennis
 -Admin page items display item properties when clicked
 
