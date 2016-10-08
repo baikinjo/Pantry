@@ -3,15 +3,43 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
-2016-10-07 16:30 - Haram
--Changed table of view of material to match the cases and creating a single view for each items.
+2016-10-08 12:04 - Injo
+-Added previous button on sale_list and sale_confirmation page
+-Modified controller sales() method
+
+2016-10-07 23:44 - Dennis
+-Admin page items display item properties when clicked
+
+2016-22:46 - Injo
+-Updated Product Controller
+-Modified Product List view to Product Single view
+-Modified name of view
+-Added singleConfirmation view to display the result
+
+2016-10-07 21:03 - Matthew
+-Fixed bugs in Recipe Controller
+-Displays craft results as flash message at recipe_single view
+
+2016-10-07 18:46 - Haram
+-Updated the post method on the Material controller to call a view that shows the result of the "Receiving".
+-Updated the Material controller to make the name of item to be clickable and linked them to the single view.
+-Created a result view for material to process the "receiving".
+-Created a single view for material to see each item's in details.
+
+2016-10-07 17:22 - Dennis
+-Added dashboard controller; dashboard view displays costs
+
+2016-10-07 17:01 - Injo
+-Modified products entries
+-Store datas into session
 
 2016-10-07 16:51 - Dennis
-Renamed cost of materials to 'price' in materials model.
+-Renamed cost of materials to 'price' in materials model.
 
 2016-10-07 16:30 - Haram
 -Changed the material model to address the attribute more accurately.
 -Changed the table view in material controller to fit the new model.
+-Changed table of view of material to match the cases and creating a single view for each items.
 
 2016-10-07 16:10 - Lydia
 -Modified table layout for material.php and product.php. Edited navigation bar.
@@ -19,7 +47,7 @@ Renamed cost of materials to 'price' in materials model.
 2016-10-07 15:11 - Injo
 -Added two new columns: quantity input and order check box
 -Added new submit button from product page
->>>>>>> 6b84d125a7b55dfac2954b09a2b2326eb82d2423
+
 
 2016-10-07 14:16 - Haram
 -Added table view for material

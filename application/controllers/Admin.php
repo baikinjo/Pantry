@@ -13,7 +13,7 @@ class Admin extends Application
     public function index()
     {
         // This is the view we want shown
-        $this->data['pagebody'] = 'admin';
+        $this->data['pagebody'] = 'admin_list';
 
         $this->create_form('Materials');
         $this->create_form('Recipes');
@@ -33,16 +33,17 @@ class Admin extends Application
         $source = $this->$type->all();
 
         // Set table headers
-        $items[] = array('Name', 'Rename', 'Delete');
+        $items[] = array('Edit Item', 'Delete');
 
         // Add table rows
         foreach ($source as $record)
         {
-            $text_data = array('name' => 'n_' . $record['id'],);
             $chk_data = array('name' => 'c_' . $record['id']);
 
-            $items[] = array($record['name'],
-                form_input($text_data, "", "class='input'"),
+            $items[] = array('<a href="/admin/edit/' .
+                             strtolower($type) . '/' .
+                             $record['id']. '">' .
+                             $record['name'] . '</a>',
                 form_checkbox($chk_data, "", "", "class='checkbox'"));
 
         }
@@ -53,18 +54,7 @@ class Admin extends Application
         $new_data = array('name' => 'a_');
         $items[] = array(form_input($new_data, "", "class='input'"),
             '', form_submit('', 'Submit', "class='submit'"));
-
-        // Submit button
-//        $items[] = array('', '', );
-
-        //table parameters
-//        $params = array(
-//            'table_open' => '<table class="table-mat" border="0" cellpadding="2" cellspacing="5">',
-//            'cell_start' => '<td class="item-mat>',
-//            'cell_alt_start' => '<td class="item-mat">'
-//        );
-//
-//        $this->table->set_template($params);
+        
 
         //Generate the materials table
         $this->data[$type.'_table'] = $this->table->generate($items);
@@ -73,23 +63,60 @@ class Admin extends Application
         $this->data['form_close'] = form_close();
 
     }
+    public function edit_item($type, $id){
+        $this->data['pagebody'] = 'admin_single';
+        $record = $this->$type->get($id);
 
+        // Create form for editing an item
+        $this->data['admin_edit_form_open'] = form_open();
+        $items[] = array('Property Name', 'Value', 'Update Name', 'Update Value', 'Delete');
+        foreach (array_keys($record) as $key){
+            if ($key != 'materials' && $key != 'id') {
+                $items[] = array($key, $record[$key], form_input(), form_input(), form_checkbox());
+            } else if ($key == 'materials') {
+                $materials = $record[$key];
+            }
+        }
+        $items[] = array('');
+        $items[] = array('Add new property');
+        $items[] = array(form_input(), form_input());
+        $items[] = array('' , '', form_reset('', 'Clear', "class='submit'"),
+            form_submit('', 'Submit', "class='submit'"));
+        // Display table
+        $this->data['admin_main_edit'] = $this->table->generate($items);
 
+        // Create table for editing recipe ingredients
+        if (isset($materials)) {
+            $ingredients[] = array('Name', 'Amount Needed',
+                'Update Name', 'Update Amount Used', 'Delete');
+            foreach ($materials as $item => $attrib) {
+                $ingredients[] = array($attrib['name'], $attrib['amount'],
+                    form_input(), form_input(), form_checkbox());
+            }
+            $ingredients[] = array('');
+            $ingredients[] = array('Add new ingredient');
+            $ingredients[] = array(form_input(), form_input());
+            $ingredients[] = array('' , '', form_reset('', 'Clear', "class='submit'"),
+                form_submit('', 'Submit', "class='submit'"));
+        }
+
+        // Display table to modify ingredients only if a recipe was selected
+        $this->data['admin_ingredients_edit'] =
+            isset($materials) ? $this->table->generate($ingredients) : NULL;
+        $this->data['admin_edit_form_close'] = form_close();
+        $this->render();
+    }
 
     public function post()
     {
         var_dump($_POST);
         $checked = array();
-        $rename = array();
 
         foreach(array_keys($_POST) as $entry)
         {
             if ($entry[0] == 'c') {
                 array_push($checked, $entry);
                 echo $entry . ' is checked' . PHP_EOL;
-            } else if ($entry[0] == 'n' && !empty(trim($_POST[$entry])) ) {
-                array_push($rename, $entry);
-                echo $_POST[$entry] . ' will be renamed' . PHP_EOL;
             } else if ($entry[0] == 'a') {
                 echo $_POST[$entry] . ' will be created' . PHP_EOL;
             }
