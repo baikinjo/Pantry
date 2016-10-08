@@ -3,11 +3,14 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-07 23:44 - Dennis
+-Admin page items display item properties when clicked
+
 2016-22:46 - Injo
-- Updated Product Controller
-- Modified Product List view to Product Single view
-- Modified name of view
-- Added singleConfirmation view to display the result
+-Updated Product Controller
+-Modified Product List view to Product Single view
+-Modified name of view
+-Added singleConfirmation view to display the result
 
 2016-10-07 21:03 - Matthew
 -Fixed bugs in Recipe Controller
@@ -20,14 +23,14 @@ Members: Matthew, Dennis, Injo, Haram, Lydia
 -Created a single view for material to see each item's in details.
 
 2016-10-07 17:22 - Dennis
-Added dashboard controller; dashboard view displays costs
+-Added dashboard controller; dashboard view displays costs
 
 2016-10-07 17:01 - Injo
 -Modified products entries
 -Store datas into session
 
 2016-10-07 16:51 - Dennis
-Renamed cost of materials to 'price' in materials model.
+-Renamed cost of materials to 'price' in materials model.
 
 2016-10-07 16:30 - Haram
 -Changed the material model to address the attribute more accurately.
