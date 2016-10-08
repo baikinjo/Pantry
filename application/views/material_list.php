@@ -17,7 +17,6 @@
         <div id="listTable" class ="row">
 		{form_open}
 			{Materials_table}
-				
 		{form_close}
 		</div>
 
