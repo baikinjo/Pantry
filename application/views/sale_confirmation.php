@@ -17,6 +17,8 @@
             {result}
             {line}
             {/result}
+            <hr>
+            {previous}
         </div>
     </div>
 </div>

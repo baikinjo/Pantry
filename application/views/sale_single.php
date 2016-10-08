@@ -15,6 +15,8 @@
     <div id="body">
         <div class="row">
             {stock_table}
+            <hr>
+            {previous}
         </div>
     </div>
 </div>
