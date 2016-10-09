@@ -63,7 +63,6 @@ class Admin extends Application
 
     }
     public function edit_item($type, $id){
-        echo $type;
         $this->data['pagebody'] = 'admin_single';
         $record = $this->$type->get($id);
 
@@ -72,21 +71,20 @@ class Admin extends Application
         $items[] = array('Property Name', 'Value', 'Update Name', 'Update Value', 'Delete');
 
         foreach (array_keys($record) as $key){
-            echo $key . "</br>";
             if ($key != 'materials' && $key != 'id') {
                 $items[] = array($key,
                                  $record[$key],
-                                 form_input($this->set_input_params('n_', 'input', $id, $type)),
-                                 form_input($this->set_input_params('v_', 'input', $id, $type)),
-                                 form_checkbox($this->set_input_params('c_', 'checkbox', $id, $type)));
+                                 form_input($this->set_input_params('n', 'input', $id, $type, $key)),
+                                 form_input($this->set_input_params('v', 'input', $id, $type, $record[$key])),
+                                 form_checkbox($this->set_input_params('c', 'checkbox', $id, $type, $key)));
             } else if ($key == 'materials') {
                 $materials = $record[$key];
             }
         }
         $items[] = array('');
         $items[] = array('Add new property');
-        $items[] = array(form_input($this->set_input_params('nn_', 'input', $id, $type)),
-                         form_input($this->set_input_params('nv_', 'input', $id, $type)));
+        $items[] = array(form_input($this->set_input_params('y', 'input', $id, $type, '')),
+                         form_input($this->set_input_params('z', 'input', $id, $type, '')));
         $items[] = array(form_reset('', 'Clear', "class='submit'"),
                          form_submit('', 'Submit', "class='submit'"), '' , '');
         // Display table
@@ -99,11 +97,14 @@ class Admin extends Application
                 'Update Name', 'Update Amount Used', 'Delete');
             foreach ($materials as $item => $attrib) {
                 $ingredients[] = array($attrib['name'], $attrib['amount'],
-                    form_input("", "", "class='input'"), form_input("", "", "class='input'"), form_checkbox("", "", "", "class='checkbox'"));
+                    form_input($this->set_input_params('n', 'input', $id, $type, $attrib['name'])),
+                    form_input($this->set_input_params('v', 'input', $id, $type, $attrib['amount'])),
+                    form_checkbox($this->set_input_params('c', 'checkbox', $id, $type, $attrib['name'])));
             }
             $ingredients[] = array('');
             $ingredients[] = array('Add new ingredient');
-            $ingredients[] = array(form_input("", "", "class='input'"), form_input("", "", "class='input'"));
+            $ingredients[] = array(form_input($this->set_input_params('y_', 'input', $id, $type, '')),
+                                   form_input($this->set_input_params('z_', 'input', $id, $type, '')));
             $ingredients[] = array(form_reset('', 'Clear', "class='submit'"),
                 form_submit('', 'Submit', "class='submit'"), '' , '');
         }
@@ -116,31 +117,66 @@ class Admin extends Application
         $this->render();
     }
 
-    private function set_input_params($prefix, $class, $id, $type) {
+    private function set_input_params($prefix, $class, $id, $type, $old) {
         return array(
             'class' => $class,
-            'name' => $prefix . $type . '_' . $id
+            'name' => $prefix . '_' . $type . '_' . $id . '_' . $old
         );
     }
 
     public function post()
     {
-        var_dump($_POST);
+
         $this->data['pagebody'] = 'admin_result';
 
+        $result = array();
 
+        if ($_POST['name'] == 'list-form'){
 
-        $checked = array();
+            foreach(array_keys($_POST) as $entry)
+            {
+                if ($entry[0] == 'c') {
+                    //array_push($checked, $entry);
+                    $result[] = array('line' => 'Id ' . substr($entry,2) . ' will be deleted </br>');
+                } else if ($entry[0] == 'a' && !empty($_POST[$entry])) {
+                    $result[] = array('line' => 'New item ' . $_POST[$entry] . ' will be created');
+                }
+            }
+        } else {
 
-        foreach(array_keys($_POST) as $entry)
-        {
-            if ($entry[0] == 'c') {
-                array_push($checked, $entry);
-                echo $entry . ' is checked' . PHP_EOL;
-            } else if ($entry[0] == 'a') {
-                echo $_POST[$entry] . ' will be created' . PHP_EOL;
+            foreach(array_keys($_POST) as $entry)
+            {
+                if ($entry == 'name' || ($entry[0] != 'c' && empty($_POST[$entry])))
+                    continue;
+
+                switch($entry[0]) {
+                    case 'n': {
+                        $result[] = array('line' =>
+                            explode("_", $entry)[1] .' id ' . explode("_", $entry)[2] .  '\'s property "'
+                            . explode("_", $entry)[3] . '" will be changed to "' . $_POST[$entry] . '".</br>');
+                        break;
+                    }
+                    case 'v': {
+                        $result[] = array('line' =>
+                            explode("_", $entry)[1] .' id ' . explode("_", $entry)[2] .  '\'s value "'
+                            . explode("_", $entry)[3] . '" will be changed to "' . $_POST[$entry] . '".</br>');
+                        break;
+                    }
+                    case 'c': {
+                        $result[] = array('line' =>
+                            explode("_", $entry)[1] . ' id ' . explode("_", $entry)[2] .
+                            ' property "' . explode("_", $entry)[3] . '" will be deleted. </br>');
+                        break;
+                    }
+                    case 'y': $newname = $_POST[$entry]; break;
+                    case 'z': $newvalue = $_POST[$entry]; break;
+                }
+                if (isset($newname) && isset($newvalue))
+                    $result[] = array('line' => 'Property ' . $newname .
+                        ' with value ' . $newvalue . ' will be created.');
             }
         }
+        $this->data['admin_results'] = $result;
 
         $this->render();
 
