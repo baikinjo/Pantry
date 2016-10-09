@@ -46,9 +46,6 @@ class Receiving extends Application
 		
 		$this->data['order_button'] = form_submit('', 'Receive', "class='submit'");
 		
-		$previous = array('onclick' =>'javascript:window.history.go(-1)');
-        $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
-		
 		$this->data['clear_data'] = form_reset('','Clear', "class='submit'");
 		
 		$this->data['form_close'] = form_close();
@@ -70,8 +67,7 @@ class Receiving extends Application
 		
 		
 		$this->data['itemName'] = ($record['name']);
-		$previous = array('onclick' =>'javascript:window.history.go(-1)');
-        $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
+
 		$this->render();
 	}
 	
@@ -111,29 +107,8 @@ class Receiving extends Application
 		} else {
 			$this->data['Materials_table'] = $this->table->generate($items);
 		}
-        
-		$previous = array('onclick' =>'javascript:window.history.go(-1)');
-        $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
-		$this->render();
-		//var_dump($this->Transactions->getMaterials());	
-		
-		/*
-		foreach (array_keys($_POST) as $entry){
-			var_dump($entry);
-			
-		}
-		
-		foreach($id as $name){
-				if($record['id'] == $name)
-					$items[] = array($record['id'],$orders);
-			}
-		
-        $id = $_POST['key'];
-        $value = $_POST['value'];
 
-       
-        $this->Transactions->setMaterials($id, $value);
-*/
+		$this->render();
 
     }
 
