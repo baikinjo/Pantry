@@ -54,7 +54,7 @@ class Dashboard extends Application
             $sum = $record['price'] * $record['amount'];
         }
 
-        return number_format($sum, 2);
+        return $this->toDollars($sum, 2);
     }
 
     /*
@@ -69,7 +69,7 @@ class Dashboard extends Application
             $sum += $num_made * $cost_single;
         }
 
-        return number_format($sum, 2);
+        return $this->toDollars($sum, 2);
     }
 
     /*

@@ -39,7 +39,7 @@ class Receiving extends Application
             $items[] = array ( '<a href="/receiving/get/' .
                                $record['id']. '">' .
                                $record['name'] . '</a>',
-               "$ ".$record['price'],floor($case) ,form_input($text_data, "", "class='input'"));
+               $this->toDollars($record['price']), floor($case) ,form_input($text_data, "", "class='input'"));
         }
 
         $this->data['Materials_table'] = $this->table->generate($items);
@@ -138,7 +138,6 @@ class Receiving extends Application
     }
 
 	public function clear() {
-		$this->session->unset_userdata('materials');
-		echo 'materials transactions cleared!';
+		$this->Materials->clear();
 	}
 }

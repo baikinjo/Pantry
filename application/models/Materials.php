@@ -73,7 +73,7 @@ class Materials extends CI_Model {
 				'name' => 'emerald dust',
 				'price' => 1000,
 				'itemPerCase' => 5,
-				'amount'=> 6)
+				'amount'=> 0)
 
 	);
 
@@ -106,5 +106,10 @@ class Materials extends CI_Model {
 	{
 		return $this->data;
 	}
+
+    public function clear() {
+        $this->session->unset_userdata('materials');
+        echo 'materials transactions cleared!';
+    }
 
 }

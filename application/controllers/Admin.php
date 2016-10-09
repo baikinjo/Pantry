@@ -20,13 +20,12 @@ class Admin extends Application
         $this->create_form('Products');
 
         $this->render();
-
     }
 
     private function create_form($type) {
 
         //Open form
-        $this->data['form_open'] = form_open('admin/post');
+        $this->data['form_open'] = form_open('admin/post', '', array('name' => 'list-form'));
 
         // Get list of items
 
@@ -52,7 +51,7 @@ class Admin extends Application
         $items[] = array('');
         $items[] = array('Add New Item', '', '');
         $new_data = array('name' => 'a_');
-        $items[] = array(form_input($new_data, "", "class='input'"),
+        $items[] = array(form_input('a_', "", "class='input'"),
             '', form_submit('', 'Submit', "class='submit'"));
         
 
@@ -64,29 +63,38 @@ class Admin extends Application
 
     }
     public function edit_item($type, $id){
+        echo $type;
         $this->data['pagebody'] = 'admin_single';
         $record = $this->$type->get($id);
 
         // Create form for editing an item
-        $this->data['admin_edit_form_open'] = form_open();
+        $this->data['admin_edit_form_open'] = form_open('admin/post', '', array('name' => 'edit-form'));
         $items[] = array('Property Name', 'Value', 'Update Name', 'Update Value', 'Delete');
+
         foreach (array_keys($record) as $key){
+            echo $key . "</br>";
             if ($key != 'materials' && $key != 'id') {
-                $items[] = array($key, $record[$key], form_input("", "", "class='input'"), form_input("", "", "class='input'"), form_checkbox("", "", "", "class='checkbox'"));
+                $items[] = array($key,
+                                 $record[$key],
+                                 form_input($this->set_input_params('n_', 'input', $id, $type)),
+                                 form_input($this->set_input_params('v_', 'input', $id, $type)),
+                                 form_checkbox($this->set_input_params('c_', 'checkbox', $id, $type)));
             } else if ($key == 'materials') {
                 $materials = $record[$key];
             }
         }
         $items[] = array('');
         $items[] = array('Add new property');
-        $items[] = array(form_input("", "", "class='input'"), form_input("", "", "class='input'"));
+        $items[] = array(form_input($this->set_input_params('nn_', 'input', $id, $type)),
+                         form_input($this->set_input_params('nv_', 'input', $id, $type)));
         $items[] = array(form_reset('', 'Clear', "class='submit'"),
-            form_submit('', 'Submit', "class='submit'"), '' , '');
+                         form_submit('', 'Submit', "class='submit'"), '' , '');
         // Display table
         $this->data['admin_main_edit'] = $this->table->generate($items);
 
         // Create table for editing recipe ingredients
         if (isset($materials)) {
+
             $ingredients[] = array('Name', 'Amount Needed',
                 'Update Name', 'Update Amount Used', 'Delete');
             foreach ($materials as $item => $attrib) {
@@ -96,9 +104,10 @@ class Admin extends Application
             $ingredients[] = array('');
             $ingredients[] = array('Add new ingredient');
             $ingredients[] = array(form_input("", "", "class='input'"), form_input("", "", "class='input'"));
-            $ingredients[] = array('' , '', form_reset('', 'Clear', "class='submit'"),
-                form_submit('', 'Submit', "class='submit'"));
+            $ingredients[] = array(form_reset('', 'Clear', "class='submit'"),
+                form_submit('', 'Submit', "class='submit'"), '' , '');
         }
+
 
         // Display table to modify ingredients only if a recipe was selected
         $this->data['admin_ingredients_edit'] =
@@ -107,9 +116,20 @@ class Admin extends Application
         $this->render();
     }
 
+    private function set_input_params($prefix, $class, $id, $type) {
+        return array(
+            'class' => $class,
+            'name' => $prefix . $type . '_' . $id
+        );
+    }
+
     public function post()
     {
         var_dump($_POST);
+        $this->data['pagebody'] = 'admin_result';
+
+
+
         $checked = array();
 
         foreach(array_keys($_POST) as $entry)
@@ -122,6 +142,7 @@ class Admin extends Application
             }
         }
 
+        $this->render();
 
     }
 
