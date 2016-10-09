@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-08 20:56 - Lydia
+-Modified table style in Production page
+
 2016-10-08 20:50 - Lydia
 -Solved conflicts
 
