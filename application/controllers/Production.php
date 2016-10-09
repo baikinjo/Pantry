@@ -85,7 +85,7 @@ class Production extends Application
             foreach ($record['materials'] as $material)
             {
                 $stock = $this->Materials->getMaterialWithName($material['name']);
-                $temp = floor($stock['totalItem'] / $material['amount']);
+                $temp = floor($stock['amount'] / $material['amount']);
 
                 if($numberCrafted == 0) {
                     $numberCrafted = $temp;
@@ -162,7 +162,14 @@ class Production extends Application
             foreach ($source['materials'] as $material)
             {
                 $stock = $this->Materials->getMaterialWithName($material['name']);
-                $items[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['totalItem']);
+                
+                if($stock['totalItem'] < $material['amount']) {
+                    $items[] = array ('name' => $material['name'], 
+                                      'amount' => $material['amount'], 
+                                      'inStock' => "<font color = 'red'>" . $stock['totalItem'] . "</font>");
+                }else{
+                    $items[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['totalItem']);
+                }
             }
 
             //Generate the materials table
