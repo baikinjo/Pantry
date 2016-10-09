@@ -104,8 +104,8 @@ class Admin extends Application
             $ingredients[] = array('');
             $ingredients[] = array('Add new ingredient');
             $ingredients[] = array(form_input("", "", "class='input'"), form_input("", "", "class='input'"));
-            $ingredients[] = array('' , '', form_reset('', 'Clear', "class='submit'"),
-                form_submit('', 'Submit', "class='submit'"));
+            $ingredients[] = array(form_reset('', 'Clear', "class='submit'"),
+                form_submit('', 'Submit', "class='submit'"), '' , '');
         }
 
 
