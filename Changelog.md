@@ -3,6 +3,10 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 01:06 - Matthew
+-Updated readme.md
+-Changed some values in materials model
+
 2016-10-08 23:44 - Dennis
 -Switched dashboard from using transaction data to using model data
 
