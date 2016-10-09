@@ -51,7 +51,12 @@ class Dashboard extends Application
         $item_list = $this->$type->all();
         $sum = 0;
         foreach ($item_list as $record){
-            $sum += $record['price'] * $record['amount'];
+            if ($type == 'Materials'){
+                $sum += $record['price'] * $record['amount'] / $record['itemPerCase'];
+            } else {
+                $sum += $record['price'] * $record['amount'];
+            }
+
         }
 
         return $this->toDollars($sum, 2);
