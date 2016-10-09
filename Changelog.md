@@ -3,6 +3,10 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-08 20:40 - Lydia
+-Modified dashboard page style.
+-Renamed recipe, product, and material views and controller to production, sales, and receiving.
+-Modified table layout and form style in views.
 
 2016-10-08 16:31 - Matthew
 -Added previous button on recipe_single view
