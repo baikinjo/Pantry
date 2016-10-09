@@ -18,6 +18,14 @@ Members: Matthew, Dennis, Injo, Haram, Lydia
 2016-10-09 11:50 - Dennis
 -Display additional details in Sales result view
 
+2016-10-09 09:04 - Haram
+-Changed the resulting page for receiving controller to tell the user that there was nothing received when forms were empty.
+-Added a clear button to clear the form inputs for receiving view.
+
+2016-10-09 08:45 - Haram
+-Changed the form type to number in receiving controller so only number can used for input
+-Changed the single item view title in receiving to show as the item's name.
+
 2016-10-09 02:24 - Dennis
 -Added admin results view. Refactored admin controller.
 -Added global toDollars() and previous button template
