@@ -27,11 +27,16 @@ class Application extends CI_Controller
 		$this->data['ci_version'] = (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>'.CI_VERSION.'</strong>' : '';
 
 		$current_page = base_url(uri_string());
-		$this->data['dActive'] = $current_page == '/' ? "class = 'active'" : "";
-		$this->data['aActive'] = $current_page == '/admin' ? "class = 'active'" : "";
-		$this->data['rActive'] = $current_page == '/receiving' ? "class = 'active'" : "";
-		$this->data['pActive'] = $current_page == '/production' ? "class = 'active'" : "";
-		$this->data['sActive'] = $current_page == '/sales' ? "class = 'active'" : "";
+		$current_page = substr($current_page,1);
+		$index = strpos($current_page, "/");
+		if($index != false){
+			$current_page = substr($current_page,0,$index);
+		}
+		$this->data['dActive'] = $current_page == '' ? "class = 'active'" : "";
+		$this->data['aActive'] = $current_page == 'admin' ? "class = 'active'" : "";
+		$this->data['rActive'] = $current_page == 'receiving' ? "class = 'active'" : "";
+		$this->data['pActive'] = $current_page == 'production' ? "class = 'active'" : "";
+		$this->data['sActive'] = $current_page == 'sales' ? "class = 'active'" : "";
 
 	}
 
