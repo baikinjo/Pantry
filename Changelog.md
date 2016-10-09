@@ -3,6 +3,11 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 02:24 - Dennis
+-Added admin results view. Refactored admin controller.
+-Added global toDollars() and previous button template
+-Misc refactoring
+
 2016-10-08 23:44 - Dennis
 -Switched dashboard from using transaction data to using model data
 
