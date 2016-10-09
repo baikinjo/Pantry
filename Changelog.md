@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 15:28 - Dennis
+-Admin controller now handles modifying of any property of a model entry
+
 2016-10-09 14:06 - Dennis
 -Bugfix dashboard controller: sum not displaying correct numbers
 
