@@ -7,6 +7,9 @@ Members: Matthew, Dennis, Injo, Haram, Lydia
 -Switched dashboard from using transaction data to using model data
 
 2016-10-08 22:29 - Matthew
+-Materials lacking for crafting will show up in red in production_single
+
+2016-10-08 22:29 - Matthew
 -Change production logging to use material id instead of material name
 
 2016-10-08 21:33 - Matthew
