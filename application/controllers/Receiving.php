@@ -34,7 +34,7 @@ class Receiving extends Application
 
         foreach ($source as $record)
         {
-			$text_data = array('name' => $record['id'],);
+			$text_data = array('name' => $record['id'],'type' => 'number', 'value' => '0');
 			$case = $record['amount'] / $record['itemPerCase'];
             $items[] = array ( '<a href="/receiving/get/' .
                                $record['id']. '">' .
@@ -42,10 +42,11 @@ class Receiving extends Application
                $this->toDollars($record['price']), floor($case) ,form_input($text_data, "", "class='input'"));
         }
 
-        $items[] = array(form_submit('', 'Submit', "class='submit'"), '', '', '');
-
-
         $this->data['Materials_table'] = $this->table->generate($items);
+		
+		$this->data['order_button'] = form_submit('', 'Receive', "class='submit'");
+		
+		$this->data['clear_data'] = form_reset('','Clear', "class='submit'");
 		
 		$this->data['form_close'] = form_close();
 		$this->render();
@@ -64,8 +65,9 @@ class Receiving extends Application
 		
 		$this->data['Materials_table'] = $this->table->generate($items);
 		
-		//$this->data = array_merge($this->data, $record);
 		
+		$this->data['itemName'] = ($record['name']);
+
 		$this->render();
 	}
 	
@@ -82,43 +84,31 @@ class Receiving extends Application
 		}
 		
 		
-		
+		$empty = "NOTHING WAS RECEIVED!";
+		$empty = "<b>" . $empty . "</b><br>Please try again!";
+	
 		$items[] = array('Ordered Items', '# Ordered Cases');
 		
 		//$source = $this->Materials->all();
-		$i =1;
+		$i = 1;
+		$j = 1;
 		foreach($orders as $cases)
 		{
-			if($cases != ""){
+			if($cases != "" && $cases != 0){
 				$source = $this->Materials->get($i);
 				$items[] = array($source['name'],$cases);
-				
+				$j++;
 			}
 			$i++;
         }
 
-        $this->data['Materials_table'] = $this->table->generate($items);
-		
-		$this->render();
-		//var_dump($this->Transactions->getMaterials());	
-		
-		/*
-		foreach (array_keys($_POST) as $entry){
-			var_dump($entry);
-			
+		if($j == 1){
+			$this->data['Materials_table'] = $empty;
+		} else {
+			$this->data['Materials_table'] = $this->table->generate($items);
 		}
-		
-		foreach($id as $name){
-				if($record['id'] == $name)
-					$items[] = array($record['id'],$orders);
-			}
-		
-        $id = $_POST['key'];
-        $value = $_POST['value'];
 
-       
-        $this->Transactions->setMaterials($id, $value);
-*/
+		$this->render();
 
     }
 
