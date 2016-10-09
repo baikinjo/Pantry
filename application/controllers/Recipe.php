@@ -52,7 +52,6 @@ class Recipe extends Application
             $previous = array('onclick' =>'javascript:window.history.go(-1)');
             $this->data['previous'] = form_button($previous, 'Previous');
             
-            echo $this->session->flashdata('craftResult');
             $this->render();
         }
 
@@ -61,9 +60,20 @@ class Recipe extends Application
          * Processes if there is enough material to craft and crafts as much
          * as possible
          * DOES NOT reduce stock number at the moment
-         * Currently displays result as flash message on same page
+         * Displays result on recipe_result
          */
-        public function craft() {
+        public function craft() {   
+            //if people directly access this page redirects to list page
+            if(!isset($_POST['amountToCraft'])) {
+                redirect('/recipe');
+            }
+            
+            $this->data['pagebody'] = 'recipe_result';
+            
+            //Previous Button
+            $previous = array('onclick' =>'javascript:window.history.go(-1)');
+            $this->data['previous'] = form_button($previous, 'Previous');
+            
             $amountToCraft = $_POST['amountToCraft'];
             $recipeId = $_POST['recipeId'];
             $numberCrafted = 0;
@@ -71,7 +81,7 @@ class Recipe extends Application
             $record = $this->Recipes->get($recipeId);
             $tempStocks = array();
                 
-            //Checks how many items you can craft
+            //Checks how many items you can craft based on stock
             foreach ($record['materials'] as $material)
             {
                 $stock = $this->Materials->getMaterialWithName($material['name']);
@@ -84,23 +94,21 @@ class Recipe extends Application
                 }
             }
             
+            //sets amount to craft and display on result
             if($numberCrafted > $amountToCraft) {
                 $numberCrafted = $amountToCraft;    
             }
             
-            //Displays flash message depending on result
+            //Displays message depending on result
             if($numberCrafted == 0) {
                 $result = "Unable to craft " . $record['name'] . ", not enough materials.";                    
-                $this->session->set_flashdata('craftResult', $result);
-                        
-                redirect("recipe/get/" . $recipeId);
             }else{
                 $result = "Crafted " . $numberCrafted . " " . $record['name'] . ".<br>";
-                $this->session->set_flashdata('craftResult', $result);
                 $this->Transactions->setRecipes($record['name'], $numberCrafted);
-                        
-                redirect("recipe/get/" . $recipeId);
             }
+            
+            $this->data['craftingResult'] = $result;
+            $this->render();
         }
         
         public function clear() {

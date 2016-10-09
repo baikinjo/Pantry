@@ -16,13 +16,12 @@
         <div class="row">
             <div class="span4">
                 {recipeMaterialTable}
-                <p>
+                <hr>
                 {form_open}
                 {amountToCraftForm}
                 {craftButton}
                 {previous}
-                {form_close}  
-                
+                {form_close}
             </div>
         </div>
     </div>
