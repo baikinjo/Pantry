@@ -68,7 +68,7 @@ class Production extends Application
             
             //Previous Button
             $previous = array('onclick' =>'javascript:window.history.go(-1)');
-            $this->data['previous'] = form_button($previous, 'Previous');
+            $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
             
             $amountToCraft = $_POST['amountToCraft'];
             $recipeId = $_POST['recipeId'];

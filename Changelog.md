@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 12:40 - Lydia
+-Modified layout in admin, production, and sales controllers
+
 2016-10-09 11:50 - Dennis
 -Display additional details in Sales result view
 
