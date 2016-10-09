@@ -162,7 +162,16 @@ class Production extends Application
             foreach ($source['materials'] as $material)
             {
                 $stock = $this->Materials->getMaterialWithName($material['name']);
-                $items[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['totalItem']);
+                
+                if($stock['totalItem'] < $material['amount']) {
+                    $items[] = array ('name' => $material['name'], 
+                                      'amount' => $material['amount'], 
+                                      'inStock' => "<font color = 'red'>" . $stock['totalItem'] . "</font>");
+                }else{
+                    $items[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['totalItem']);
+                }
+                
+                
             }
 
             //Generate the materials table
