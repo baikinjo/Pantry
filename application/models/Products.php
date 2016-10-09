@@ -112,4 +112,10 @@ class Products extends CI_Model {
 		return $this->data;
 	}
 
+	// clears transactions
+    public function clear() {
+        $this->session->unset_userdata('products');
+        echo 'products transactions cleared!';
+    }
+
 }

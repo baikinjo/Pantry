@@ -48,10 +48,6 @@ class Production extends Application
             $this->data['craftButton'] = form_submit('mysubmit', 'Craft', "class='submit'");
             $this->data['form_close'] = form_close();
             
-            //Previous Button
-            $previous = array('onclick' =>'javascript:window.history.go(-1)');
-            $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
-            
             $this->render();
         }
 
@@ -116,8 +112,7 @@ class Production extends Application
         }
         
         public function clear() {
-            $this->session->unset_userdata('recipes');
-            echo 'recipes transactions cleared!';
+            $this->Recipes->clear();
         }
         
         /*
@@ -163,12 +158,12 @@ class Production extends Application
             {
                 $stock = $this->Materials->getMaterialWithName($material['name']);
                 
-                if($stock['totalItem'] < $material['amount']) {
+                if($stock['amount'] < $material['amount']) {
                     $items[] = array ('name' => $material['name'], 
                                       'amount' => $material['amount'], 
-                                      'inStock' => "<font color = 'red'>" . $stock['totalItem'] . "</font>");
+                                      'inStock' => "<font color = 'red'>" . $stock['amount'] . "</font>");
                 }else{
-                    $items[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['totalItem']);
+                    $items[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['amount']);
                 }
             }
 

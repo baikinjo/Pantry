@@ -229,4 +229,9 @@ class Recipes extends CI_Model {
 		return $this->data;
 	}
 
+    public function clear() {
+        $this->session->unset_userdata('recipes');
+        echo 'recipes transactions cleared!';
+    }
+
 }

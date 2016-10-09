@@ -43,7 +43,7 @@ class Sales extends Application
                               $record['name'] . '</a>',
                               $record['desc'],
                               $record['amount'],
-                              $record['price'],
+                              $this->toDollars($record['price']),
                               form_input($num_input, ""));
         }
 
@@ -55,8 +55,6 @@ class Sales extends Application
         $this->data['clear_data'] = form_reset('','Clear', "class='submit'");
         //close form
         $this->data['form_close'] = form_close();
-        $previous = array('onclick' =>'javascript:window.history.go(-1)');
-        $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
     }
 
     public function get($id){
@@ -65,11 +63,10 @@ class Sales extends Application
         $source = $this->Products->get($id);
 
         $items[] = array('Name', 'Description', 'Price');
-        $items[] = array($source['name'], $source['desc'], $source['price']);
+        $items[] = array($source['name'], $source['desc'], $this->toDollars($source['price']));
 
         $this->data['stock_table'] = $this->table->generate($items);
-        $previous = array('onclick' =>'javascript:window.history.go(-1)');
-        $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
+
         $this->render();
     }
 
@@ -93,13 +90,11 @@ class Sales extends Application
             }
         }
         $this->data['result'] = $result;
-        $previous = array('onclick' =>'javascript:window.history.go(-1)');
-        $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
+
         $this->render();
     }
 
     public function clear() {
-        $this->session->unset_userdata('products');
-        echo 'products transactions cleared!';
+        $this->Products->clear();
     }
 }
