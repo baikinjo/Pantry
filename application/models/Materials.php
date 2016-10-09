@@ -107,4 +107,9 @@ class Materials extends CI_Model {
 		return $this->data;
 	}
 
+    public function clear() {
+        $this->session->unset_userdata('materials');
+        echo 'materials transactions cleared!';
+    }
+
 }

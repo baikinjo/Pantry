@@ -17,7 +17,8 @@
         <div id="listTable" class ="row">
 			{Materials_table}
 		</div>
-
+        <hr>
+        {previous}
     </div>
 </div>
 

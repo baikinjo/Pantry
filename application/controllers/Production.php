@@ -48,10 +48,6 @@ class Production extends Application
             $this->data['craftButton'] = form_submit('mysubmit', 'Craft', "class='submit'");
             $this->data['form_close'] = form_close();
             
-            //Previous Button
-            $previous = array('onclick' =>'javascript:window.history.go(-1)');
-            $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
-            
             $this->render();
         }
 
@@ -116,8 +112,7 @@ class Production extends Application
         }
         
         public function clear() {
-            $this->session->unset_userdata('recipes');
-            echo 'recipes transactions cleared!';
+            $this->Recipes->clear();
         }
         
         /*
