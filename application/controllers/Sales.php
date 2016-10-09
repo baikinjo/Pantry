@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Product extends Application
+class Sales extends Application
 {
     	function __construct()
 	{
@@ -24,7 +24,7 @@ class Product extends Application
 	private function create_form($type) {
 
         //Open form
-        $this->data['form_open'] = form_open('product/sales');
+        $this->data['form_open'] = form_open('sales/sales');
 
         // Get list of items
 
@@ -38,25 +38,25 @@ class Product extends Application
         {
             $num_input = array('type' => 'number', 'value' => '0', 'class' => 'num-field', 'name' => $record['id']);
             
-            $items[] = array('<a href="/product/get/' .
+            $items[] = array('<a href="/sales/get/' .
                               $record['id']. '">' .
                               $record['name'] . '</a>',
                               $record['desc'],
                               $record['amount'],
                               $record['price'],
-                              form_input($num_input));
+                              form_input($num_input, ""));
         }
 
         //Generate the materials table
         $this->data[$type.'_table'] = $this->table->generate($items);
         //submit button
-        $this->data['order_button'] = form_submit('', 'Order');
+        $this->data['order_button'] = form_submit('', 'Order', "class='submit'");
         //clear form
-        $this->data['clear_data'] = form_reset('','Clear');
+        $this->data['clear_data'] = form_reset('','Clear', "class='submit'");
         //close form
         $this->data['form_close'] = form_close();
         $previous = array('onclick' =>'javascript:window.history.go(-1)');
-        $this->data['previous'] = form_button($previous, 'Previous');
+        $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
     }
 
     public function get($id){
@@ -69,7 +69,7 @@ class Product extends Application
 
         $this->data['stock_table'] = $this->table->generate($items);
         $previous = array('onclick' =>'javascript:window.history.go(-1)');
-        $this->data['previous'] = form_button($previous, 'Previous');
+        $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
         $this->render();
     }
 
@@ -94,7 +94,7 @@ class Product extends Application
         }
         $this->data['result'] = $result;
         $previous = array('onclick' =>'javascript:window.history.go(-1)');
-        $this->data['previous'] = form_button($previous, 'Previous');
+        $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
         $this->render();
     }
 

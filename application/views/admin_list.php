@@ -2,9 +2,9 @@
     <ul>
         <li><a href="/">Dashboard</a></li>
         <li><a class="active" href="/admin">Administration</a></li>
-        <li><a href="/material">Material</a></li>
-        <li><a href="/recipe">Recipe</a></li>
-        <li><a href="/product">Product</a></li>
+        <li><a href="/receiving">Receiving</a></li>
+        <li><a href="/production">Production</a></li>
+        <li><a href="/sales">Sales</a></li>
     </ul>
 </div>
 <div id="content">
@@ -15,9 +15,9 @@
     <div id="body">
         <div id="subtitles">
             <ul class="nav">
-                <li id="subtitle" class="activeSubtitle" onclick="changeTable(this)">Material</li>
-                <li id="subtitle" onclick="changeTable(this)">Recipe</li>
-                <li id="subtitle" onclick="changeTable(this)">Product</li>
+                <li id="subtitle" class="activeSubtitle" onclick="changeTable(this)">Receiving</li>
+                <li id="subtitle" onclick="changeTable(this)">Production</li>
+                <li id="subtitle" onclick="changeTable(this)">Sales</li>
             </ul>
         </div>
         <div class="adTables">
