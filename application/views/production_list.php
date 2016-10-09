@@ -13,7 +13,7 @@
     </div>
 
     <div id="body">
-        <div id="lisaTable" class="row">
+        <div id="listTable" class="row">
             {Recipes_table}
         </div>
     </div>
