@@ -3,6 +3,33 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 11:50 - Dennis
+-Display additional details in Sales result view
+
+2016-10-09 02:24 - Dennis
+-Added admin results view. Refactored admin controller.
+-Added global toDollars() and previous button template
+-Misc refactoring
+
+2016-10-09 01:06 - Matthew
+-Updated readme.md
+-Changed some values in materials model
+
+2016-10-08 23:44 - Dennis
+-Switched dashboard from using transaction data to using model data
+
+2016-10-08 22:29 - Matthew
+-Materials lacking for crafting will show up in red in production_single
+
+2016-10-08 22:29 - Matthew
+-Change production logging to use material id instead of material name
+
+2016-10-08 21:33 - Matthew
+-Added recipe_result View
+-Results now display at recipe_result View instead of as a flash message
+-Cleaned some code in Recipe controller
+-Added error check to prevent users from going to recipe/craft directly
+
 2016-10-08 20:56 - Lydia
 -Modified table style in Production page
 
