@@ -4,6 +4,10 @@
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
 2016-10-08 22:29 - Matthew
+-Updated readme.md
+-Changed some values in materials model
+
+2016-10-08 22:29 - Matthew
 -Materials lacking for crafting will show up in red in production_single
 
 2016-10-08 22:29 - Matthew

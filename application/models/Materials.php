@@ -73,7 +73,7 @@ class Materials extends CI_Model {
 				'name' => 'emerald dust',
 				'price' => 1000,
 				'itemPerCase' => 5,
-				'totalItem'=> 6)
+				'totalItem'=> 0)
 
 	);
 
