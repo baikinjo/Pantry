@@ -25,6 +25,14 @@ class Application extends CI_Controller
 		$this->data = array ();
 		$this->data['pagetitle'] = 'RPGCrafter';
 		$this->data['ci_version'] = (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>'.CI_VERSION.'</strong>' : '';
+
+		$current_page = base_url(uri_string());
+		$this->data['dActive'] = $current_page == '/' ? "class = 'active'" : "";
+		$this->data['aActive'] = $current_page == '/admin' ? "class = 'active'" : "";
+		$this->data['rActive'] = $current_page == '/receiving' ? "class = 'active'" : "";
+		$this->data['pActive'] = $current_page == '/production' ? "class = 'active'" : "";
+		$this->data['sActive'] = $current_page == '/sales' ? "class = 'active'" : "";
+
 	}
 
 	/**
@@ -38,8 +46,6 @@ class Application extends CI_Controller
 
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		$this->parser->parse('template', $this->data);
-
-
 	}
 
     /*
