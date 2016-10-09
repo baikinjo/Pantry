@@ -3,6 +3,12 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-08 21:33 - Matthew
+-Added recipe_result View
+-Results now display at recipe_result View instead of as a flash message
+-Cleaned some code in Recipe controller
+-Added error check to prevent users from going to recipe/craft directly
+
 2016-10-08 20:56 - Lydia
 -Modified table style in Production page
 
