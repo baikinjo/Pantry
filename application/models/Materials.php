@@ -7,73 +7,73 @@ class Materials extends CI_Model {
 				'name' => 'empty bottle',
 				'price' => 100,
 				'itemPerCase' => 12,
-				'amount'=> 36),
+				'totalItem'=> 36),
 
 		array(	'id' => '2', 
 				'name' => 'red herb',
 				'price' => 150,
 				'itemPerCase' => 6,
-				'amount'=> 15),
+				'totalItem'=> 15),
 
 		array(	'id' => '3', 
 				'name' => 'blue herb',
 				'price' => 150,
 				'itemPerCase' => 6,
-				'amount'=> 14),
+				'totalItem'=> 14),
 
 		array(	'id' => '4', 
 				'name' => 'iron ingot',
 				'price' => 500,
 				'itemPerCase' => 10,
-				'amount'=> 20),
+				'totalItem'=> 20),
 
 		array(	'id' => '5', 
 				'name' => 'steel ingot',
 				'price' => 500,
 				'itemPerCase' => 10,
-				'amount'=> 18),
+				'totalItem'=> 18),
 
 		array(	'id' => '6', 
 				'name' => 'leather',
 				'price' => 250,
 				'itemPerCase' => 20,
-				'amount'=> 69),
+				'totalItem'=> 69),
 
 		array(	'id' => '7', 
 				'name' => 'wood',
 				'price' => 250,
 				'itemPerCase' => 50,
-				'amount'=> 250),
+				'totalItem'=> 250),
 
 		array(	'id' => '8', 
 				'name' => 'scroll',
 				'price' => 100,
 				'itemPerCase' => 100,
-				'amount'=> 40),
+				'totalItem'=> 40),
 
 		array(	'id' => '9', 
 				'name' => 'ruby dust',
 				'price' => 1000,
 				'itemPerCase' => 5,
-				'amount'=> 12),
+				'totalItem'=> 12),
 
 		array(	'id' => '10', 
 				'name' => 'sapphire dust',
 				'price' => 1000,
 				'itemPerCase' => 5,
-				'amount'=> 11),
+				'totalItem'=> 11),
 
 		array(	'id' => '11', 
 				'name' => 'topaz dust',
 				'price' => 1000,
 				'itemPerCase' => 5,
-				'amount'=> 9),
+				'totalItem'=> 9),
 
 		array(	'id' => '12', 
 				'name' => 'emerald dust',
 				'price' => 1000,
 				'itemPerCase' => 5,
-				'amount'=> 6)
+				'totalItem'=> 6)
 
 	);
 

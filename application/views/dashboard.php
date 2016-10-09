@@ -20,13 +20,7 @@
 			<p id="data">${recipes_cost} expended from producing items</p>
 		</div>
 		<div id="board">
-			<p id="data">${revenue} received from sales</p>
-		</div>
-		<div id="board">
-			<p id="data">Number of different products for sale: {products_stocked}</p>
-		</div>
-		<div id="board">
-			<p id="data">Number of recipes: {recipes_count}</p>
+			<p id="data">${products_cost} received from sales</p>
 		</div>
 	</div>
 </div>

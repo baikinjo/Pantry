@@ -35,7 +35,7 @@ class Receiving extends Application
         foreach ($source as $record)
         {
 			$text_data = array('name' => $record['id'],);
-			$case = $record['amount'] / $record['itemPerCase'];
+			$case = $record['totalItem'] / $record['itemPerCase'];
             $items[] = array ( '<a href="/receiving/get/' .
                                $record['id']. '">' .
                                $record['name'] . '</a>',
@@ -60,7 +60,7 @@ class Receiving extends Application
 		$record = $this->Materials->get($id);
 		
 		$items[] = array('Name','Items Per Case' ,'Total Stocked Items');
-		$items[] = array($record['name'],$record['itemPerCase'] ,$record['amount']);
+		$items[] = array($record['name'],$record['itemPerCase'] ,$record['totalItem']);
 		
 		$this->data['Materials_table'] = $this->table->generate($items);
 		
