@@ -3,6 +3,15 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 09:04 - Haram
+-Changed the resulting page for receiving controller to tell the user that there was nothing received when forms were empty.
+-Added a clear button to clear the form inputs for receiving view.
+
+2016-10-09 08:45 - Haram
+-Added a back button for single item and result view for receiving views.
+-Changed the form type to number in receiving controller so only number can used for input
+-Changed the single item view title in receiving to show as the item's name.
+
 2016-10-08 23:44 - Dennis
 -Switched dashboard from using transaction data to using model data
 

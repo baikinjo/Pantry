@@ -17,7 +17,11 @@
         <div id="listTable" class ="row">
 		{form_open}
 			{Materials_table}
+			<hr>
+			{order_button}
+			{clear_data}
 		{form_close}
+		
 		</div>
 
     </div>
