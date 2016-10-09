@@ -3,6 +3,11 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 02:24 - Dennis
+-Added admin results view. Refactored admin controller.
+-Added global toDollars() and previous button template
+-Misc refactoring
+
 2016-10-09 01:06 - Matthew
 -Updated readme.md
 -Changed some values in materials model

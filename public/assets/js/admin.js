@@ -20,11 +20,11 @@ var tableThree = document.getElementById("p");
 
 function changeTable(input){
   var name = input.innerText;
-  if(name == "Material"){
+  if(name == "Receiving"){
     tableOne.className = "activeTable";
     tableTwo.className = "notActiveTable";
     tableThree.className = "notActiveTable";
-  }else if(name == "Recipe"){
+  }else if(name == "Production"){
     tableOne.className = "notActiveTable";
     tableTwo.className = "activeTable";
     tableThree.className = "notActiveTable";
