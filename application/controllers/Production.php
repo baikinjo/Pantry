@@ -17,15 +17,9 @@ class Production extends Application
 	{
 		// this is the view we want shown
 		$this->data['pagebody'] = 'production_list';
-
-		// build the list of items, to pass on to our view
-		$source = $this->Recipes->all();
-		$items = array();
-		foreach ($source as $record)
-		{
-			$items[] = array ('id' => $record['id'], 'name' => $record['name']);
-		}
-		$this->data['items'] = $items;
+                
+                //create table with list of recipes
+                $this->createRecipeListTable('Recipes');
 
 		$this->render();
 	}
@@ -39,19 +33,13 @@ class Production extends Application
             $materials = array();
             $record = $this->Recipes->get($id);
             
+            //Makes table with materials name, amount needed and amount in stock
+            $this->createSingleRecipeTable($id);
+            
             //form inits
             $inputForm = array('type' => 'number', 'value' => '1', 'class' => 'num-field', 'name' => 'amountToCraft');
             $formHidden = array('recipeId' => $id);
-	    
             
-            //Creates an array of Materials needed and their respective amounts
-            foreach ($record['materials'] as $material)
-            {
-                $stock = $this->Materials->getMaterialWithName($material['name']);
-                $materials[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['totalItem']);
-            }
-            
-            $this->data['materialList'] = $materials;
             $this->data['itemName'] = $record['name'];
             
             //form related vars
@@ -66,7 +54,6 @@ class Production extends Application
             
             echo $this->session->flashdata('craftResult');
             $this->render();
-            
         }
 
         /**
@@ -119,5 +106,54 @@ class Production extends Application
         public function clear() {
             $this->session->unset_userdata('recipes');
             echo 'recipes transactions cleared!';
+        }
+        
+        /*
+         * Generates table of recipes showing name and description
+         * clicking name goes to single view
+         */
+        private function createRecipeListTable($type) {
+       
+            // Get list of items
+            $source = $this->$type->all();
+
+            // Set table headers
+            $items[] = array('Name', 'Description');
+
+            // Add table rows
+            foreach ($source as $record)
+            {
+                $items[] = array('<a href="/production/get/' .
+                                  $record['id']. '">' .
+                                  $record['name'] . '</a>',
+                                  $record['desc']
+                                  );
+            }
+
+            //Generate the materials table
+            $this->data[$type.'_table'] = $this->table->generate($items);
+        }
+        
+        /*
+         * Generates table of materials needed in recipe $id
+         * shows amount needed and amount in stock
+         */
+        private function createSingleRecipeTable($id) {
+       
+            // Get recipe with $id
+            $source = $this->Recipes->get($id);
+
+            // Set table headers
+            $items[] = array('Material Name', 'Material Needed', 'Material in Stock');
+            
+            // fill up table
+            foreach ($source['materials'] as $material)
+            {
+                $stock = $this->Materials->getMaterialWithName($material['name']);
+                $items[] = array ('name' => $material['name'], 'amount' => $material['amount'], 'inStock' => $stock['totalItem']);
+            }
+
+            //Generate the materials table
+            $this->data['recipeMaterialTable'] = $this->table->generate($items);
         }
 }
