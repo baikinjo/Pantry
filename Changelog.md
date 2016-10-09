@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 16:21 - Lydia
+-Edited readme image
+
 2016-10-09 15:28 - Dennis
 -Admin controller now handles modifying of any property of a model entry
 -Edited README.md
