@@ -129,6 +129,25 @@ footer {
 	margin: 0 15px 0 15px;
 }
 
+/**
+* Dashboard
+*/
+
+#board{
+	width: 260px;
+	height: 260px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	background-color: #f1f1f1;
+	float:left;
+	box-shadow: 3px 3px 8px #877195;
+}
+
+#data{
+	font-size: 19px;
+	margin: 80px 40px;
+}
+
 #subtitles ul {
 	list-style-type: none;
 	margin: 0;
@@ -164,7 +183,7 @@ footer {
 * Table style
 */
 
-#m, #r, #p, #listTable{
+#m, #r, #p, #listTable, #adminList{
 	text-align: left;
 }
 
@@ -204,7 +223,7 @@ footer {
 }
 
 
-.input{
+.input, .num-field{
 	border: solid 1px #6326a5;
 	padding: .3em .3em .3em;
 }
