@@ -9,22 +9,20 @@
 </div>
 <div id="content">
     <div id="title">
-        <h1>Recipe</h1>
+        <h1>{itemName}</h1>
     </div>
 
     <div id="body">
         <div class="row">
-            <div class="span4">{itemName}
-                <hr>
-                {materialList}
-                <p>{name} : {amount} ({inStock})</p>
-                {/materialList}
-                <hr>
+            <div class="span4">
+                {recipeMaterialTable}
+                <p>
                 {form_open}
                 {amountToCraftForm}
                 {craftButton}
                 {previous}
                 {form_close}  
+                
             </div>
         </div>
     </div>
