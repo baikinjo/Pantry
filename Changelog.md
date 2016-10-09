@@ -3,6 +3,12 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 14:06 - Dennis
+-Bugfix dashboard controller: sum not displaying correct numbers
+
+2016-10-09 13:47 - Lydia
+-Moved navigation out from views to template, edited MY_Controller
+
 2016-10-09 12:40 - Lydia
 -Modified layout in admin, production, and sales controllers
 
