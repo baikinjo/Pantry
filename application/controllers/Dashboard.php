@@ -31,7 +31,7 @@ class Dashboard extends Application
     public function calculate_value_purchased($type, $getInventory){
         $inventory = $getInventory;
         $sum = 0;
-        for ($i = 1; $i <= count($inventory); $i++){
+        for ($i = 2; $i <= count($inventory); $i++){
             if ($inventory[$i]!= 0){
                 $record = $this->$type->get($i);
                 $sum += $record['price'] * $inventory[$i];

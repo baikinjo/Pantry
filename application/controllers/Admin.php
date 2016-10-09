@@ -72,16 +72,16 @@ class Admin extends Application
         $items[] = array('Property Name', 'Value', 'Update Name', 'Update Value', 'Delete');
         foreach (array_keys($record) as $key){
             if ($key != 'materials' && $key != 'id') {
-                $items[] = array($key, $record[$key], form_input(), form_input(), form_checkbox());
+                $items[] = array($key, $record[$key], form_input("", "", "class='input'"), form_input("", "", "class='input'"), form_checkbox("", "", "", "class='checkbox'"));
             } else if ($key == 'materials') {
                 $materials = $record[$key];
             }
         }
         $items[] = array('');
         $items[] = array('Add new property');
-        $items[] = array(form_input(), form_input());
-        $items[] = array('' , '', form_reset('', 'Clear', "class='submit'"),
-            form_submit('', 'Submit', "class='submit'"));
+        $items[] = array(form_input("", "", "class='input'"), form_input("", "", "class='input'"));
+        $items[] = array(form_reset('', 'Clear', "class='submit'"),
+            form_submit('', 'Submit', "class='submit'"), '' , '');
         // Display table
         $this->data['admin_main_edit'] = $this->table->generate($items);
 
@@ -91,11 +91,11 @@ class Admin extends Application
                 'Update Name', 'Update Amount Used', 'Delete');
             foreach ($materials as $item => $attrib) {
                 $ingredients[] = array($attrib['name'], $attrib['amount'],
-                    form_input(), form_input(), form_checkbox());
+                    form_input("", "", "class='input'"), form_input("", "", "class='input'"), form_checkbox("", "", "", "class='checkbox'"));
             }
             $ingredients[] = array('');
             $ingredients[] = array('Add new ingredient');
-            $ingredients[] = array(form_input(), form_input());
+            $ingredients[] = array(form_input("", "", "class='input'"), form_input("", "", "class='input'"));
             $ingredients[] = array('' , '', form_reset('', 'Clear', "class='submit'"),
                 form_submit('', 'Submit', "class='submit'"));
         }

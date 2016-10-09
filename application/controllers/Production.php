@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Recipe extends Application
+class Production extends Application
 {
 
 	function __construct()
@@ -16,7 +16,7 @@ class Recipe extends Application
 	public function index()
 	{
 		// this is the view we want shown
-		$this->data['pagebody'] = 'recipe_list';
+		$this->data['pagebody'] = 'production_list';
                 
                 //create table with list of recipes
                 $this->createRecipeListTable('Recipes');
@@ -28,7 +28,7 @@ class Recipe extends Application
          * Displays selected recipe. Allows users to craft.
          */
         public function get($id) {
-            $this->data['pagebody'] = 'recipe_single';
+            $this->data['pagebody'] = 'production_single';
             
             $materials = array();
             $record = $this->Recipes->get($id);
@@ -43,14 +43,14 @@ class Recipe extends Application
             $this->data['itemName'] = $record['name'];
             
             //form related vars
-            $this->data['form_open'] = form_open('recipe/craft', '', $formHidden);
-            $this->data['amountToCraftForm'] = form_input($inputForm);
-            $this->data['craftButton'] = form_submit('mysubmit', 'Craft');
+            $this->data['form_open'] = form_open('production/craft', '', $formHidden);
+            $this->data['amountToCraftForm'] = form_input($inputForm, "", "class='input'");
+            $this->data['craftButton'] = form_submit('mysubmit', 'Craft', "class='submit'");
             $this->data['form_close'] = form_close();
             
             //Previous Button
             $previous = array('onclick' =>'javascript:window.history.go(-1)');
-            $this->data['previous'] = form_button($previous, 'Previous');
+            $this->data['previous'] = form_button($previous, 'Previous', "class='submit'");
             
             $this->render();
         }
@@ -65,10 +65,10 @@ class Recipe extends Application
         public function craft() {   
             //if people directly access this page redirects to list page
             if(!isset($_POST['amountToCraft'])) {
-                redirect('/recipe');
+                redirect('/production');
             }
             
-            $this->data['pagebody'] = 'recipe_result';
+            $this->data['pagebody'] = 'production_result';
             
             //Previous Button
             $previous = array('onclick' =>'javascript:window.history.go(-1)');
@@ -104,7 +104,6 @@ class Recipe extends Application
                 $result = "Unable to craft " . $record['name'] . ", not enough materials.";                    
             }else{
                 $result = "Crafted " . $numberCrafted . " " . $record['name'] . ".<br>";
-                $this->Transactions->setRecipes($record['name'], $numberCrafted);
             }
             
             $this->data['craftingResult'] = $result;
@@ -131,7 +130,7 @@ class Recipe extends Application
             // Add table rows
             foreach ($source as $record)
             {
-                $items[] = array('<a href="/recipe/get/' .
+                $items[] = array('<a href="/production/get/' .
                                   $record['id']. '">' .
                                   $record['name'] . '</a>',
                                   $record['desc']
