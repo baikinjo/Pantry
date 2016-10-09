@@ -4,6 +4,11 @@
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
 
+2016-10-08 20:21 - Matthew
+-Change display of recipe_list to use tables
+-Added recipe description to recipe_list view
+-Change display of recipe_single to use tables
+
 2016-10-08 16:31 - Matthew
 -Added previous button on recipe_single view
 -Save crafting results to session for logging purpose
