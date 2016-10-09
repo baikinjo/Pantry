@@ -44,7 +44,7 @@ class Sales extends Application
                               $record['desc'],
                               $record['amount'],
                               $this->toDollars($record['price']),
-                              form_input($num_input, ""));
+                              form_input($num_input, "", "class='input'"));
         }
 
         //Generate the materials table
