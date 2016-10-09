@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-09 11:50 - Dennis
+-Display additional details in Sales result view
+
 2016-10-09 02:24 - Dennis
 -Added admin results view. Refactored admin controller.
 -Added global toDollars() and previous button template

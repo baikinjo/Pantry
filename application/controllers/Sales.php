@@ -79,16 +79,21 @@ class Sales extends Application
         }
 
         $result = array();
+        $sum = 0;
         foreach($inventory as $source){
+            $record = $this->Products->get($source['key']);
 
             if($source['value'] == 1){
-                $record = $this->Products->get($source['key']);
-                $result[] = array('line' => "You ordered " . $source['value'] . ' ' .  $record['name'] . "</br>");
+                $result[] = array('line' => "You ordered " . $source['value'] . ' ' .  $record['name'] .
+                    " at " . $this->toDollars($record['price'])  . " per unit." . "</br>");
             }else if($source['value'] > 1){
-                $record = $this->Products->get($source['key']);
-                $result[] = array('line' => "You ordered " . $source['value'] . ' ' .  $record['name'] ."s" . "</br>");
+                $result[] = array('line' => "You ordered " . $source['value'] . ' ' .  $record['name'] .
+                    "s at " . $this->toDollars($record['price'])  . " per unit." . "</br>");
             }
+
+            $sum += $record['price'] * $source['value'];
         }
+        $result[] = array('line' => "<br><strong>Grand Total:</strong> " . $this->toDollars($sum));
         $this->data['result'] = $result;
 
         $this->render();
