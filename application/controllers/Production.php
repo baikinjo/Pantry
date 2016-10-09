@@ -99,10 +99,15 @@ class Production extends Application
                 $numberCrafted = $amountToCraft;    
             }
             
-            //Displays message depending on result
+            //Displays message depending on result and sets logging
             if($numberCrafted == 0) {
                 $result = "Unable to craft " . $record['name'] . ", not enough materials.";                    
             }else{
+                foreach ($record['materials'] as $material)
+                {
+                   $temp = $this->Materials->getMaterialWithName($material['name']);
+                   $this->Transactions->setRecipes($temp['id'], (Int)($material['amount'] * $numberCrafted));
+                }
                 $result = "Crafted " . $numberCrafted . " " . $record['name'] . ".<br>";
             }
             

@@ -3,6 +3,9 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-08 22:29 - Matthew
+-Change production logging to use material id instead of material name
+
 2016-10-08 21:33 - Matthew
 -Added recipe_result View
 -Results now display at recipe_result View instead of as a flash message
