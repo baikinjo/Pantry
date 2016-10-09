@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Material extends Application
+class Receiving extends Application
 {
 
 	function __construct()
@@ -19,12 +19,12 @@ class Material extends Application
 	{
 
 		// this is the view we want shown
-		$this->data['pagebody'] = 'material_list';
+		$this->data['pagebody'] = 'receiving_list';
 
 		// build the list of authors, to pass on to our view
 		$source = $this->Materials->all();
 
-		$this->data['form_open'] = form_open('material/post');
+		$this->data['form_open'] = form_open('receiving/post');
 		
 		//$test = $this->Transactions->getMaterials();
 
@@ -35,11 +35,11 @@ class Material extends Application
         foreach ($source as $record)
         {
 			$text_data = array('name' => $record['id'],);
-			$case = $record['totalItem'] / $record['itemPerCase'];
-            $items[] = array ( '<a href="/material/get/' .
+			$case = $record['amount'] / $record['itemPerCase'];
+            $items[] = array ( '<a href="/receiving/get/' .
                                $record['id']. '">' .
                                $record['name'] . '</a>',
-               "$ ".$record['price'],floor($case) ,form_input($text_data));
+               "$ ".$record['price'],floor($case) ,form_input($text_data, "", "class='input'"));
         }
 
         $items[] = array(form_submit('', 'Submit', "class='submit'"), '', '', '');
@@ -55,12 +55,12 @@ class Material extends Application
 
 	public function get($id) {
 		
-		$this->data['pagebody'] = 'material_single';
+		$this->data['pagebody'] = 'receiving_single';
 		
 		$record = $this->Materials->get($id);
 		
 		$items[] = array('Name','Items Per Case' ,'Total Stocked Items');
-		$items[] = array($record['name'],$record['itemPerCase'] ,$record['totalItem']);
+		$items[] = array($record['name'],$record['itemPerCase'] ,$record['amount']);
 		
 		$this->data['Materials_table'] = $this->table->generate($items);
 		
@@ -74,7 +74,7 @@ class Material extends Application
 		//var_dump($_POST);
 		
 		
-		$this->data['pagebody'] = 'material_result';
+		$this->data['pagebody'] = 'receiving_result';
 		
 		foreach ($_POST as $post_name => $post_value){
 			$this->Transactions->setMaterials($post_name, $post_value);

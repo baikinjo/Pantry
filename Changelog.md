@@ -3,6 +3,44 @@
 ============================================
 Members: Matthew, Dennis, Injo, Haram, Lydia
 
+2016-10-08 23:44 - Dennis
+-Switched dashboard from using transaction data to using model data
+
+2016-10-08 22:29 - Matthew
+-Materials lacking for crafting will show up in red in production_single
+
+2016-10-08 22:29 - Matthew
+-Change production logging to use material id instead of material name
+
+2016-10-08 21:33 - Matthew
+-Added recipe_result View
+-Results now display at recipe_result View instead of as a flash message
+-Cleaned some code in Recipe controller
+-Added error check to prevent users from going to recipe/craft directly
+
+2016-10-08 20:56 - Lydia
+-Modified table style in Production page
+
+2016-10-08 20:50 - Lydia
+-Solved conflicts
+
+2016-10-08 20:40 - Lydia
+-Modified dashboard page style.
+-Renamed recipe, product, and material views and controller to production, sales, and receiving.
+-Modified table layout and form style in views.
+
+2016-10-08 20:21 - Matthew
+-Change display of recipe_list to use tables
+-Added recipe description to recipe_list view
+-Change display of recipe_single to use tables
+
+2016-10-08 16:31 - Matthew
+-Added previous button on recipe_single view
+-Save crafting results to session for logging purpose
+
+2016-10-08 14:13 - Injo
+-Fixed sale_single previous button
+
 2016-10-08 12:04 - Injo
 -Added previous button on sale_list and sale_confirmation page
 -Modified controller sales() method

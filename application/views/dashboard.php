@@ -2,9 +2,9 @@
 	<ul>
 		<li><a class="active" href="/">Dashboard</a></li>
 		<li><a href="/admin">Administration</a></li>
-		<li><a href="/material">Material</a></li>
-		<li><a href="/recipe">Recipe</a></li>
-		<li><a href="/product">Product</a></li>
+		<li><a href="/receiving">Receiving</a></li>
+		<li><a href="/production">Production</a></li>
+		<li><a href="/sales">Sales</a></li>
 	</ul>
 </div>
 <div id="content">
@@ -13,8 +13,20 @@
 	</div>
 
 	<div id="body">
-		<p>${materials_cost} spent purchasing inventory.</p>
-		<p>${recipes_cost} expended from producing items.</p>
-		<p>${products_cost} received from sales</p>
+		<div id="board">
+			<p id="data">${materials_cost} spent purchasing inventory</p>
+		</div>
+		<div id="board">
+			<p id="data">${recipes_cost} expended from producing items</p>
+		</div>
+		<div id="board">
+			<p id="data">${revenue} received from sales</p>
+		</div>
+		<div id="board">
+			<p id="data">Number of different products for sale: {products_stocked}</p>
+		</div>
+		<div id="board">
+			<p id="data">Number of recipes: {recipes_count}</p>
+		</div>
 	</div>
 </div>
